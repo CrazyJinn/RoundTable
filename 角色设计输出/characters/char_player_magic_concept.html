@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色概念设计 - 魔法主角</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a1a;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .concept-container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .character-design {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .design-view {
+            position: relative;
+            width: 256px;
+            height: 256px;
+            border: 2px dashed #666;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .design-view h3 {
+            margin-bottom: 10px;
+            color: #9B30FF;
+        }
+        .info-panel {
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            min-width: 280px;
+        }
+        .info-panel h3 {
+            margin-bottom: 15px;
+            color: #9B30FF;
+            font-size: 18px;
+        }
+        .info-item {
+            margin: 8px 0;
+        }
+        .info-item label {
+            color: #888;
+            margin-right: 8px;
+        }
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            border: 2px solid #444;
+        }
+        .style-badge {
+            display: inline-block;
+            background: #4B0082;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="concept-container">
+        <!-- 角色设计视图 -->
+        <div class="character-design">
+            <!-- 正面视图 -->
+            <div class="design-view" data-resource="char_player_magic_design_front"
+                 data-view="front">
+                <h3>正面设计图</h3>
+                <div style="font-size: 12px; opacity: 0.8;">
+                    256x256px | 暗黑神秘紫曜风格
+                </div>
+                <div style="font-size: 11px; opacity: 0.6; margin-top: 5px;">
+                    黑色紧身连衣裙<br>
+                    紫色挑染长发<br>
+                    神秘锐利眼神
+                </div>
+            </div>
+
+            <!-- 侧面视图 -->
+            <div class="design-view" data-resource="char_player_magic_design_side"
+                 data-view="side">
+                <h3>侧面设计图</h3>
+                <div style="font-size: 12px; opacity: 0.8;">
+                    256x256px | 暗黑神秘紫曜风格
+                </div>
+                <div style="font-size: 11px; opacity: 0.6; margin-top: 5px;">
+                    斗篷飘逸设计<br>
+                    长发流动感<br>
+                    高筒靴侧面
+                </div>
+            </div>
+
+            <!-- 背面视图 -->
+            <div class="design-view" data-resource="char_player_magic_design_back"
+                 data-view="back">
+                <h3>背面设计图</h3>
+                <div style="font-size: 12px; opacity: 0.8;">
+                    256x256px | 暗黑神秘紫曜风格
+                </div>
+                <div style="font-size: 11px; opacity: 0.6; margin-top: 5px;">
+                    斗篷内衬紫色<br>
+                    长发飘逸<br>
+                    魔法光辉效果
+                </div>
+            </div>
+        </div>
+
+        <!-- 角色信息面板 -->
+        <div class="info-panel">
+            <h3>魔法主角 - 概念设计</h3>
+            <div class="info-item">
+                <label>角色ID:</label> char_player_magic
+            </div>
+            <div class="info-item">
+                <label>角色类型:</label> 主角
+            </div>
+            <div class="info-item">
+                <label>性别:</label> 女
+            </div>
+            <div class="info-item">
+                <label>年龄:</label> 120岁（外貌约20岁）
+            </div>
+            <div class="info-item">
+                <label>隶属势力:</label> 秘术协会
+            </div>
+            <div class="info-item">
+                <label>头身比例:</label> 3.5头身
+            </div>
+            <div class="info-item">
+                <label>体型:</label> 苗条，优雅曲线
+            </div>
+            <div class="info-item">
+                <label>发型:</label> 黑色中长发，发梢紫色挑染，齐刘海
+            </div>
+            <div class="info-item">
+                <label>服装:</label> 黑色紧身连衣裙、黑色斗篷、黑色短款百褶裙、黑色长款手套
+            </div>
+            <div class="info-item">
+                <label>武器:</label> 魔法杖/法球/魔法书（待定）
+            </div>
+            <div class="info-item">
+                <label>配饰:</label> 黑色项圈（紫色宝石）、圆形耳环、黑色高筒靴
+            </div>
+            <div class="info-item">
+                <label>特征:</label> 冷峻神秘，紫曜魔法光辉
+            </div>
+            <div class="info-item">
+                <label>表情:</label> 冷峻、神秘、锐利
+            </div>
+            <div class="style-badge">魔法派 · 秘术协会</div>
+            <hr style="margin: 15px 0; border-color: #333;">
+            <div class="info-item">
+                <label>配色方案:</label>
+                <div class="color-palette">
+                    <div class="color-swatch" style="background: #1A1A1A;" title="黑色 - 服装主体"></div>
+                    <div class="color-swatch" style="background: #9B30FF;" title="紫色 - 装饰、内衬"></div>
+                    <div class="color-swatch" style="background: #E066FF;" title="亮紫色 - 魔法光辉"></div>
+                    <div class="color-swatch" style="background: #4B0082;" title="深紫色 - 魔法背景"></div>
+                </div>
+            </div>
+            <hr style="margin: 15px 0; border-color: #333;">
+            <div class="info-item" style="font-size: 12px;">
+                <strong>设计要点：</strong><br>
+                • 黑紫配色为主，神秘暗黑风格<br>
+                • 斗篷设计飘逸，内衬为紫色<br>
+                • 发梢紫色挑染，魔法感十足<br>
+                • 项圈宝石发光，魔法光辉环绕<br>
+                • 长筒靴有光泽感，优雅危险
+            </div>
+        </div>
+    </div>
+</body>
+</html>

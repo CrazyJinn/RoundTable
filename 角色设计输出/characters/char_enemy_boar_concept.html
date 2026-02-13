@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色概念设计 - 钢鬃野猪</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a1a;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .concept-container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .character-design {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .design-view {
+            position: relative;
+            width: 128px;
+            height: 128px;
+            border: 2px dashed #666;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .design-view h3 {
+            margin-bottom: 10px;
+            color: #A9A9A9;
+        }
+        .info-panel {
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            min-width: 280px;
+        }
+        .info-panel h3 {
+            margin-bottom: 15px;
+            color: #A9A9A9;
+            font-size: 18px;
+        }
+        .info-item {
+            margin: 8px 0;
+        }
+        .info-item label {
+            color: #888;
+            margin-right: 8px;
+        }
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            border: 2px solid #444;
+        }
+        .enemy-badge {
+            display: inline-block;
+            background: #8B0000;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .star-rating {
+            color: #FFD700;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="concept-container">
+        <!-- 角色设计视图 -->
+        <div class="character-design">
+            <!-- 正面视图 -->
+            <div class="design-view" data-resource="char_enemy_boar_design_front"
+                 data-view="front">
+                <h3>正面设计图</h3>
+                <div style="font-size: 11px; opacity: 0.8;">
+                    128x128px | 深灰金属风格
+                </div>
+                <div style="font-size: 10px; opacity: 0.6; margin-top: 5px;">
+                    黄色发光眼睛<br>
+                    巨大锋利獠牙<br>
+                    背部尖刺
+                </div>
+            </div>
+
+            <!-- 侧面视图 -->
+            <div class="design-view" data-resource="char_enemy_boar_design_side"
+                 data-view="side">
+                <h3>侧面设计图</h3>
+                <div style="font-size: 11px; opacity: 0.8;">
+                    128x128px | 深灰金属风格
+                </div>
+                <div style="font-size: 10px; opacity: 0.6; margin-top: 5px;">
+                    硬化如金属皮肤<br>
+                    背部金属尖刺<br>
+                    坚硬四蹄
+                </div>
+            </div>
+
+            <!-- 背面视图 -->
+            <div class="design-view" data-resource="char_enemy_boar_design_back"
+                 data-view="back">
+                <h3>背面设计图</h3>
+                <div style="font-size: 11px; opacity: 0.8;">
+                    128x128px | 深灰金属风格
+                </div>
+                <div style="font-size: 10px; opacity: 0.6; margin-top: 5px;">
+                    背部尖刺阵列<br>
+                    金属质感皮肤<br>
+                    粗壮身躯
+                </div>
+            </div>
+        </div>
+
+        <!-- 角色信息面板 -->
+        <div class="info-panel">
+            <h3>钢鬃野猪 - 概念设计</h3>
+            <div class="info-item">
+                <label>角色ID:</label> char_enemy_boar
+            </div>
+            <div class="info-item">
+                <label>角色类型:</label> 敌人-普通
+            </div>
+            <div class="info-item">
+                <label>危险等级:</label> <span class="star-rating">★★☆☆☆</span>
+            </div>
+            <div class="info-item">
+                <label>体型:</label> 大型野猪（约1.5米长）
+            </div>
+            <div class="info-item">
+                <label>皮肤:</label> 深灰色，硬化如金属
+            </div>
+            <div class="info-item">
+                <label>眼睛:</label> 发出黄色光芒
+            </div>
+            <div class="info-item">
+                <label>特征:</label>
+                <div style="font-size: 12px; margin-top: 5px;">
+                    • 背部生有金属质感的尖刺<br>
+                    • 獠牙巨大且锋利<br>
+                    • 眼睛发出黄色光芒<br>
+                    • 四蹄坚硬如铁
+                </div>
+            </div>
+            <div class="enemy-badge">普通怪物 · 动物类</div>
+            <hr style="margin: 15px 0; border-color: #333;">
+            <div class="info-item">
+                <label>配色方案:</label>
+                <div class="color-palette">
+                    <div class="color-swatch" style="background: #4A4A4A;" title="深灰色 - 主体"></div>
+                    <div class="color-swatch" style="background: #C0C0C0;" title="银灰色 - 尖刺"></div>
+                    <div class="color-swatch" style="background: #FFFF00;" title="黄色 - 眼睛"></div>
+                    <div class="color-swatch" style="background: #2F2F2F;" title="暗灰色 - 暗部"></div>
+                </div>
+            </div>
+            <hr style="margin: 15px 0; border-color: #333;">
+            <div class="info-item" style="font-size: 12px;">
+                <strong>战斗特性：</strong><br>
+                • 攻击方式：冲撞攻击、背部尖刺发射（远程）<br>
+                • 冲撞有击退效果<br>
+                • 尖刺可穿透多个目标<br>
+                • 弱点：冲撞后有硬直时间
+            </div>
+        </div>
+    </div>
+</body>
+</html>

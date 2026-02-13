@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>怪物立绘合集 - 战斗姿态</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #1a1a1a;
+            font-family: Arial, sans-serif;
+            padding: 40px 20px;
+        }
+        h1 {
+            color: #f0c040;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .enemy-section {
+            margin-bottom: 60px;
+        }
+        .enemy-section h2 {
+            color: #888;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+        .portrait-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .portrait-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .portrait-frame {
+            position: relative;
+            border: 2px dashed #444;
+            background: rgba(255,255,255,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+        .elite .portrait-frame {
+            border-color: #FFD700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+        .normal .portrait-frame {
+            width: 256px;
+            height: 384px;
+        }
+        .elite .portrait-frame {
+            width: 512px;
+            height: 768px;
+        }
+        .enemy-name {
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .enemy-id {
+            color: #666;
+            font-size: 11px;
+        }
+        .star-rating {
+            color: #FFD700;
+            font-size: 12px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            margin-top: 5px;
+        }
+        .badge-normal {
+            background: #8B0000;
+        }
+        .badge-elite {
+            background: #DAA520;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>怪物立绘合集 - 战斗姿态</h1>
+
+    <!-- 普通怪物 - 动物类 -->
+    <div class="enemy-section">
+        <h2>普通怪物 - 动物类</h2>
+        <div class="portrait-grid">
+            <div class="portrait-item normal">
+                <div class="portrait-frame" data-resource="char_enemy_rat_portrait">
+                    <div style="font-size: 14px; font-weight: bold;">辐射巨鼠</div>
+                    <div style="font-size: 11px; opacity: 0.7; margin-top: 5px;">256x384px</div>
+                    <div style="font-size: 10px; opacity: 0.5; margin-top: 3px;">战斗姿态</div>
+                </div>
+                <div class="enemy-name">辐射巨鼠</div>
+                <div class="enemy-id">char_enemy_rat</div>
+                <div class="star-rating">★☆☆☆☆</div>
+                <span class="badge badge-normal">普通</span>
+            </div>
+
+            <div class="portrait-item normal">
+                <div class="portrait-frame" data-resource="char_enemy_boar_portrait">
+                    <div style="font-size: 14px; font-weight: bold;">钢鬃野猪</div>
+                    <div style="font-size: 11px; opacity: 0.7; margin-top: 5px;">256x384px</div>
+                    <div style="font-size: 10px; opacity: 0.5; margin-top: 3px;">战斗姿态</div>
+                </div>
+                <div class="enemy-name">钢鬃野猪</div>
+                <div class="enemy-id">char_enemy_boar</div>
+                <div class="star-rating">★★☆☆☆</div>
+                <span class="badge badge-normal">普通</span>
+            </div>
+
+            <div class="portrait-item normal">
+                <div class="portrait-frame" data-resource="char_enemy_crow_portrait">
+                    <div style="font-size: 14px; font-weight: bold;">骨翼鸦</div>
+                    <div style="font-size: 11px; opacity: 0.7; margin-top: 5px;">256x384px</div>
+                    <div style="font-size: 10px; opacity: 0.5; margin-top: 3px;">飞行姿态</div>
+                </div>
+                <div class="enemy-name">骨翼鸦</div>
+                <div class="enemy-id">char_enemy_crow</div>
+                <div class="star-rating">★★☆☆☆</div>
+                <span class="badge badge-normal">普通</span>
+            </div>
+
+            <div class="portrait-item normal">
+                <div class="portrait-frame" data-resource="char_enemy_spider_portrait">
+                    <div style="font-size: 14px; font-weight: bold;">毒液蜘蛛</div>
+                    <div style="font-size: 11px; opacity: 0.7; margin-top: 5px;">256x384px</div>
+                    <div style="font-size: 10px; opacity: 0.5; margin-top: 3px;">战斗姿态</div>
+                </div>
+                <div class="enemy-name">毒液蜘蛛</div>
+                <div class="enemy-id">char_enemy_spider</div>
+                <div class="star-rating">★★☆☆☆</div>
+                <span class="badge badge-normal">普通</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 精英怪物 - 动物类 -->
+    <div class="enemy-section">
+        <h2>精英怪物 - 动物类</h2>
+        <div class="portrait-grid">
+            <div class="portrait-item elite">
+                <div class="portrait-frame" data-resource="char_enemy_bear_portrait">
+                    <div style="font-size: 18px; font-weight: bold;">裂变熊</div>
+                    <div style="font-size: 12px; opacity: 0.7; margin-top: 5px;">512x768px</div>
+                    <div style="font-size: 11px; opacity: 0.5; margin-top: 3px;">咆哮姿态</div>
+                </div>
+                <div class="enemy-name">裂变熊</div>
+                <div class="enemy-id">char_enemy_bear</div>
+                <div class="star-rating">★★★★☆</div>
+                <span class="badge badge-elite">精英</span>
+            </div>
+
+            <div class="portrait-item elite">
+                <div class="portrait-frame" data-resource="char_enemy_wolf_portrait">
+                    <div style="font-size: 18px; font-weight: bold;">双头狼</div>
+                    <div style="font-size: 12px; opacity: 0.7; margin-top: 5px;">512x768px</div>
+                    <div style="font-size: 11px; opacity: 0.5; margin-top: 3px;">协同攻击姿态</div>
+                </div>
+                <div class="enemy-name">双头狼</div>
+                <div class="enemy-id">char_enemy_wolf</div>
+                <div class="star-rating">★★★☆☆</div>
+                <span class="badge badge-elite">精英</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 普通怪物 - 植物类 -->
+    <div class="enemy-section">
+        <h2>普通怪物 - 植物类</h2>
+        <div class="portrait-grid">
+            <div class="portrait-item normal">
+                <div class="portrait-frame" data-resource="char_enemy_vine_portrait">
+                    <div style="font-size: 14px; font-weight: bold;">藤蔓怪</div>
+                    <div style="font-size: 11px; opacity: 0.7; margin-top: 5px;">256x384px</div>
+                    <div style="font-size: 10px; opacity: 0.5; margin-top: 3px;">战斗姿态</div>
+                </div>
+                <div class="enemy-name">藤蔓怪</div>
+                <div class="enemy-id">char_enemy_vine</div>
+                <div class="star-rating">★☆☆☆☆</div>
+                <span class="badge badge-normal">普通</span>
+            </div>
+
+            <div class="portrait-item normal">
+                <div class="portrait-frame" data-resource="char_enemy_mushroom_portrait">
+                    <div style="font-size: 14px; font-weight: bold;">爆炸孢子菇</div>
+                    <div style="font-size: 11px; opacity: 0.7; margin-top: 5px;">256x384px</div>
+                    <div style="font-size: 10px; opacity: 0.5; margin-top: 3px;">战斗姿态</div>
+                </div>
+                <div class="enemy-name">爆炸孢子菇</div>
+                <div class="enemy-id">char_enemy_mushroom</div>
+                <div class="star-rating">★★☆☆☆</div>
+                <span class="badge badge-normal">普通</span>
+            </div>
+
+            <div class="portrait-item normal">
+                <div class="portrait-frame" data-resource="char_enemy_vampire_portrait">
+                    <div style="font-size: 14px; font-weight: bold;">吸血藤</div>
+                    <div style="font-size: 11px; opacity: 0.7; margin-top: 5px;">256x384px</div>
+                    <div style="font-size: 10px; opacity: 0.5; margin-top: 3px;">战斗姿态</div>
+                </div>
+                <div class="enemy-name">吸血藤</div>
+                <div class="enemy-id">char_enemy_vampire</div>
+                <div class="star-rating">★★☆☆☆</div>
+                <span class="badge badge-normal">普通</span>
+            </div>
+
+            <div class="portrait-item normal">
+                <div class="portrait-frame" data-resource="char_enemy_acid_portrait">
+                    <div style="font-size: 14px; font-weight: bold;">酸液喷壶草</div>
+                    <div style="font-size: 11px; opacity: 0.7; margin-top: 5px;">256x384px</div>
+                    <div style="font-size: 10px; opacity: 0.5; margin-top: 3px;">喷射姿态</div>
+                </div>
+                <div class="enemy-name">酸液喷壶草</div>
+                <div class="enemy-id">char_enemy_acid</div>
+                <div class="star-rating">★★☆☆☆</div>
+                <span class="badge badge-normal">普通</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 精英怪物 - 植物类 -->
+    <div class="enemy-section">
+        <h2>精英怪物 - 植物类</h2>
+        <div class="portrait-grid">
+            <div class="portrait-item elite">
+                <div class="portrait-frame" data-resource="char_enemy_treant_portrait">
+                    <div style="font-size: 18px; font-weight: bold;">树人守卫</div>
+                    <div style="font-size: 12px; opacity: 0.7; margin-top: 5px;">512x768px</div>
+                    <div style="font-size: 11px; opacity: 0.5; margin-top: 3px;">重击姿态</div>
+                </div>
+                <div class="enemy-name">树人守卫</div>
+                <div class="enemy-id">char_enemy_treant</div>
+                <div class="star-rating">★★★★☆</div>
+                <span class="badge badge-elite">精英</span>
+            </div>
+
+            <div class="portrait-item elite">
+                <div class="portrait-frame" data-resource="char_enemy_flower_portrait">
+                    <div style="font-size: 18px; font-weight: bold;">食人花</div>
+                    <div style="font-size: 12px; opacity: 0.7; margin-top: 5px;">512x768px</div>
+                    <div style="font-size: 11px; opacity: 0.5; margin-top: 3px;">张开姿态</div>
+                </div>
+                <div class="enemy-name">食人花</div>
+                <div class="enemy-id">char_enemy_flower</div>
+                <div class="star-rating">★★★☆☆</div>
+                <span class="badge badge-elite">精英</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色概念设计 - 爆炸孢子菇</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a1a;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .concept-container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .character-design {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .design-view {
+            position: relative;
+            width: 128px;
+            height: 128px;
+            border: 2px dashed #666;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .design-view h3 {
+            margin-bottom: 10px;
+            color: #9B30FF;
+        }
+        .info-panel {
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            min-width: 280px;
+        }
+        .info-panel h3 {
+            margin-bottom: 15px;
+            color: #9B30FF;
+            font-size: 18px;
+        }
+        .info-item {
+            margin: 8px 0;
+        }
+        .info-item label {
+            color: #888;
+            margin-right: 8px;
+        }
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            border: 2px solid #444;
+        }
+        .enemy-badge {
+            display: inline-block;
+            background: #8B0000;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .star-rating {
+            color: #FFD700;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="concept-container">
+        <!-- 角色设计视图 -->
+        <div class="character-design">
+            <!-- 正面视图 -->
+            <div class="design-view" data-resource="char_enemy_mushroom_design_front"
+                 data-view="front">
+                <h3>正面设计图</h3>
+                <div style="font-size: 11px; opacity: 0.8;">
+                    128x128px | 紫色爆炸风格
+                </div>
+                <div style="font-size: 10px; opacity: 0.6; margin-top: 5px;">
+                    紫色菌盖<br>
+                    发光纹路<br>
+                    孢子飘浮
+                </div>
+            </div>
+
+            <!-- 侧面视图 -->
+            <div class="design-view" data-resource="char_enemy_mushroom_design_side"
+                 data-view="side">
+                <h3>侧面设计图</h3>
+                <div style="font-size: 11px; opacity: 0.8;">
+                    128x128px | 紫色爆炸风格
+                </div>
+                <div style="font-size: 10px; opacity: 0.6; margin-top: 5px;">
+                    粗壮菌柄<br>
+                    菌盖倾斜<br>
+                    孢子释放
+                </div>
+            </div>
+
+            <!-- 爆炸状态 -->
+            <div class="design-view" data-resource="char_enemy_mushroom_design_explode"
+                 data-view="explode">
+                <h3>爆炸状态</h3>
+                <div style="font-size: 11px; opacity: 0.8;">
+                    128x128px | 紫色爆炸风格
+                </div>
+                <div style="font-size: 10px; opacity: 0.6; margin-top: 5px;">
+                    孢子爆炸<br>
+                    毒气扩散<br>
+                    菌盖张开
+                </div>
+            </div>
+        </div>
+
+        <!-- 角色信息面板 -->
+        <div class="info-panel">
+            <h3>爆炸孢子菇 - 概念设计</h3>
+            <div class="info-item">
+                <label>角色ID:</label> char_enemy_mushroom
+            </div>
+            <div class="info-item">
+                <label>角色类型:</label> 敌人-普通
+            </div>
+            <div class="info-item">
+                <label>危险等级:</label> <span class="star-rating">★★☆☆☆</span>
+            </div>
+            <div class="info-item">
+                <label>体型:</label> 中型蘑菇（约80cm高）
+            </div>
+            <div class="info-item">
+                <label>特征:</label>
+                <div style="font-size: 12px; margin-top: 5px;">
+                    • 菌盖紫色，有发光纹路<br>
+                    • 菌柄粗壮<br>
+                    • 周围有孢子飘浮<br>
+                    • 受伤时会释放孢子
+                </div>
+            </div>
+            <div class="enemy-badge">普通怪物 · 植物类</div>
+            <hr style="margin: 15px 0; border-color: #333;">
+            <div class="info-item">
+                <label>配色方案:</label>
+                <div class="color-palette">
+                    <div class="color-swatch" style="background: #800080;" title="紫色 - 菌盖"></div>
+                    <div class="color-swatch" style="background: #9B30FF;" title="亮紫色 - 发光纹路"></div>
+                    <div class="color-swatch" style="background: #DDA0DD;" title="淡紫色 - 孢子"></div>
+                    <div class="color-swatch" style="background: #4B0082;" title="深紫色 - 暗部"></div>
+                </div>
+            </div>
+            <hr style="margin: 15px 0; border-color: #333;">
+            <div class="info-item" style="font-size: 12px;">
+                <strong>战斗特性：</strong><br>
+                • 攻击方式：释放爆炸性孢子<br>
+                • 孢子爆炸+毒气扩散（范围伤害）<br>
+                • 死亡时释放毒气<br>
+                • 弱点：移动速度慢、生命值较低
+            </div>
+        </div>
+    </div>
+</body>
+</html>
