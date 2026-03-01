@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>立绘设计 - [角色名称]</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: sans-serif; background: #1a1a2e; color: #eee; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #ff6b6b; border-bottom: 2px solid #ff6b6b; padding-bottom: 10px; margin-bottom: 20px; }
+        h2 { color: #4ecdc4; margin: 20px 0 15px; padding-left: 10px; border-left: 3px solid #4ecdc4; }
+
+        .section { background: #16213e; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .info-row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .info-item { background: #2a2a4a; padding: 10px 15px; border-radius: 5px; min-width: 200px; }
+
+        .canvas-area { background: #2a2a4a; border: 2px dashed #4ecdc4; border-radius: 8px; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+
+        .color-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+        .color-swatch { width: 40px; height: 40px; border-radius: 6px; border: 2px solid transparent; }
+        .color-swatch:hover { border-color: #fff; transform: scale(1.1); }
+
+        .ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+        .ref-box { background: #2a2a4a; border-radius: 8px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+
+        .split-view { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 800px) { .split-view { grid-template-columns: 1fr; } }
+
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #0f3460; }
+        th { background: #0f3460; color: #4ecdc4; }
+        td { background: #1a1a2e; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>立绘设计 - [角色名称]</h1>
+
+    <!-- 基本信息 -->
+    <div class="section" name="角色档案">
+        <div class="info-row">
+            <div class="info-item" name="角色ID">[ID]</div>
+            <div class="info-item" name="角色名称">[名称]</div>
+            <div class="info-item" name="角色定位">[定位]</div>
+            <div class="info-item" name="势力阵营">[阵营]</div>
+        </div>
+    </div>
+
+    <!-- 规格要求 -->
+    <div class="section" name="规格要求">
+        <div class="info-row">
+            <div class="info-item" name="输出尺寸">[宽x高]</div>
+            <div class="info-item" name="分辨率">[DPI]</div>
+            <div class="info-item" name="文件格式">[格式]</div>
+        </div>
+    </div>
+
+    <!-- 设计关键词 -->
+    <div class="section" name="设计关键词">
+        <div class="info-row">
+            <div class="info-item">[关键词1]</div>
+            <div class="info-item">[关键词2]</div>
+            <div class="info-item">[关键词3]</div>
+            <div class="info-item">[关键词4]</div>
+        </div>
+    </div>
+
+    <!-- 角色设定 -->
+    <h2>角色设定</h2>
+    <div class="section" name="角色背景描述">
+        [角色背景故事和性格描述]
+    </div>
+
+    <!-- 外貌特征表格 -->
+    <div class="section" name="外貌特征">
+        <table>
+            <tr><th>特征</th><th>描述</th><th>设计要点</th></tr>
+            <tr name="年龄外观"><td>年龄外观</td><td>[描述]</td><td>[要点]</td></tr>
+            <tr name="体型"><td>体型</td><td>[描述]</td><td>[要点]</td></tr>
+            <tr name="发型发色"><td>发型发色</td><td>[描述]</td><td>[要点]</td></tr>
+            <tr name="瞳色"><td>瞳色</td><td>[描述]</td><td>[要点]</td></tr>
+            <tr name="肤色"><td>肤色</td><td>[描述]</td><td>[要点]</td></tr>
+            <tr name="显著特征"><td>显著特征</td><td>[描述]</td><td>[要点]</td></tr>
+        </table>
+    </div>
+
+    <!-- 服装设计表格 -->
+    <div class="section" name="服装设计">
+        <table>
+            <tr><th>部位</th><th>描述</th><th>材质/颜色</th></tr>
+            <tr name="头部"><td>头部</td><td>[描述]</td><td>[材质/颜色]</td></tr>
+            <tr name="上衣"><td>上衣</td><td>[描述]</td><td>[材质/颜色]</td></tr>
+            <tr name="下装"><td>下装</td><td>[描述]</td><td>[材质/颜色]</td></tr>
+            <tr name="鞋靴"><td>鞋靴</td><td>[描述]</td><td>[材质/颜色]</td></tr>
+            <tr name="配饰"><td>配饰</td><td>[描述]</td><td>[材质/颜色]</td></tr>
+        </table>
+    </div>
+
+    <!-- 配色方案 -->
+    <h2>配色方案</h2>
+    <div class="section" name="主色板">
+        <div class="color-row">
+            <div class="color-swatch" name="主色-上衣" style="background: #4A90D9;"></div>
+            <div class="color-swatch" name="主色-下装" style="background: #2C3E50;"></div>
+            <div class="color-swatch" name="强调色" style="background: #E74C3C;"></div>
+            <div class="color-swatch" name="点缀色" style="background: #F39C12;"></div>
+            <div class="color-swatch" name="阴影色" style="background: #34495E;"></div>
+        </div>
+    </div>
+
+    <div class="section" name="肤色与发色">
+        <div class="color-row">
+            <div class="color-swatch" name="肤色-基底" style="background: #F5CBA7;"></div>
+            <div class="color-swatch" name="肤色-阴影" style="background: #E8B796;"></div>
+            <div class="color-swatch" name="发色-主色" style="background: #5D4E37;"></div>
+            <div class="color-swatch" name="发色-阴影" style="background: #3D3225;"></div>
+            <div class="color-swatch" name="发色-高光" style="background: #7B6B5A;"></div>
+        </div>
+    </div>
+
+    <!-- 立绘构图 -->
+    <h2>立绘构图</h2>
+    <div class="section">
+        <div class="split-view">
+            <div class="canvas-area" name="全身立绘区域">
+                <div style="width: 80%; height: 90%; border: 1px dashed #555; border-radius: 5px;" name="立绘占位框"></div>
+            </div>
+            <div>
+                <table name="构图要点">
+                    <tr><th>项目</th><th>说明</th></tr>
+                    <tr name="姿势"><td>姿势</td><td>[描述]</td></tr>
+                    <tr name="重心"><td>重心</td><td>[描述]</td></tr>
+                    <tr name="视线方向"><td>视线方向</td><td>[描述]</td></tr>
+                    <tr name="手部动作"><td>手部动作</td><td>[描述]</td></tr>
+                    <tr name="服装飘动"><td>服装飘动</td><td>[描述]</td></tr>
+                </table>
+
+                <table name="图层规划" style="margin-top: 15px;">
+                    <tr><th>图层</th><th>内容</th></tr>
+                    <tr name="前景效果层"><td>前景效果</td><td>光效、粒子</td></tr>
+                    <tr name="身体前部层"><td>身体前部</td><td>手臂、衣物前摆</td></tr>
+                    <tr name="躯干层"><td>躯干</td><td>主体服装</td></tr>
+                    <tr name="身体后部层"><td>身体后部</td><td>头发后层、披风</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 局部设计 -->
+    <div class="section" name="局部设计详图">
+        <div class="ref-grid">
+            <div class="ref-box" name="头部特写"></div>
+            <div class="ref-box" name="上半身"></div>
+            <div class="ref-box" name="手部与武器"></div>
+            <div class="ref-box" name="下半身"></div>
+        </div>
+    </div>
+
+    <!-- 表情变体 -->
+    <h2>表情变体</h2>
+    <div class="section" name="基础表情">
+        <div class="ref-grid">
+            <div class="ref-box" name="默认表情"></div>
+            <div class="ref-box" name="高兴"></div>
+            <div class="ref-box" name="生气"></div>
+            <div class="ref-box" name="悲伤"></div>
+            <div class="ref-box" name="惊讶"></div>
+            <div class="ref-box" name="战斗"></div>
+        </div>
+    </div>
+
+    <!-- 参考素材 -->
+    <h2>参考素材</h2>
+    <div class="section" name="风格参考">
+        <div class="ref-grid">
+            <div class="ref-box" name="风格配色参考"></div>
+            <div class="ref-box" name="服装配饰参考"></div>
+            <div class="ref-box" name="姿势构图参考"></div>
+        </div>
+    </div>
+
+    <!-- 输出清单 -->
+    <h2>输出清单</h2>
+    <div class="section" name="输出文件列表">
+        <table>
+            <tr><th>文件名</th><th>内容</th><th>格式</th><th>尺寸</th><th>优先级</th></tr>
+            <tr name="全身立绘"><td>[ID]_立绘_全身.png</td><td>全身立绘</td><td>PNG</td><td>[尺寸]</td><td>P0</td></tr>
+            <tr name="半身立绘"><td>[ID]_立绘_半身.png</td><td>半身立绘</td><td>PNG</td><td>[尺寸]</td><td>P0</td></tr>
+            <tr name="分层源文件"><td>[ID]_立绘.psd</td><td>分层源文件</td><td>PSD</td><td>[尺寸]</td><td>P1</td></tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

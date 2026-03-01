@@ -1,0 +1,95 @@
+{
+  "version": "1.0",
+  "description": "技能配置",
+  "skills": [
+    {
+      "id": "tech_grenade",
+      "name": "手雷投掷",
+      "type": "tech",
+      "description": "投掷一枚手雷，造成范围伤害",
+      "cooldown": 5,
+      "damage": 30,
+      "damageType": "physical",
+      "range": 200,
+      "radius": 80,
+      "effects": [],
+      "icon": "skill_grenade"
+    },
+    {
+      "id": "tech_emp",
+      "name": "电磁脉冲",
+      "type": "tech",
+      "description": "释放电磁脉冲，对范围内敌人造成伤害并减速",
+      "cooldown": 5,
+      "damage": 25,
+      "damageType": "magical",
+      "range": 150,
+      "radius": 100,
+      "effects": [
+        { "type": "slow", "duration": 3, "value": 30 }
+      ],
+      "icon": "skill_emp"
+    },
+    {
+      "id": "tech_orbital",
+      "name": "轨道轰炸",
+      "type": "tech",
+      "description": "呼叫轨道支援，对大范围造成毁灭性伤害",
+      "cooldown": 30,
+      "damage": 100,
+      "damageType": "magical",
+      "range": 300,
+      "radius": 150,
+      "effects": [],
+      "icon": "skill_orbital"
+    },
+    {
+      "id": "magic_fireball",
+      "name": "火球术",
+      "type": "magic",
+      "description": "发射一枚火球，造成范围火焰伤害",
+      "cooldown": 5,
+      "mpCost": 20,
+      "damage": 30,
+      "damageType": "magical",
+      "range": 200,
+      "radius": 60,
+      "effects": [
+        { "type": "burn", "duration": 3, "value": 5, "tickInterval": 0.5 }
+      ],
+      "icon": "skill_fireball"
+    },
+    {
+      "id": "magic_frost",
+      "name": "冰霜新星",
+      "type": "magic",
+      "description": "释放冰霜能量，冻结周围敌人并造成伤害",
+      "cooldown": 5,
+      "mpCost": 30,
+      "damage": 25,
+      "damageType": "magical",
+      "range": 150,
+      "radius": 100,
+      "effects": [
+        { "type": "slow", "duration": 4, "value": 50 }
+      ],
+      "icon": "skill_frost"
+    },
+    {
+      "id": "magic_meteor",
+      "name": "陨石术",
+      "type": "magic",
+      "description": "召唤陨石从天而降，造成巨大伤害",
+      "cooldown": 30,
+      "mpCost": 80,
+      "damage": 100,
+      "damageType": "magical",
+      "range": 300,
+      "radius": 150,
+      "effects": [
+        { "type": "burn", "duration": 5, "value": 10, "tickInterval": 0.5 }
+      ],
+      "icon": "skill_meteor"
+    }
+  ]
+}

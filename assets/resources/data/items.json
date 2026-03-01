@@ -1,0 +1,142 @@
+{
+  "version": "1.0",
+  "description": "物品配置",
+  "itemTypes": ["consumable", "equipment", "material", "key"],
+  "items": [
+    {
+      "id": "health_potion_small",
+      "name": "小型生命药水",
+      "type": "consumable",
+      "description": "恢复30点生命值",
+      "icon": "item_potion_red",
+      "maxStack": 10,
+      "price": 20,
+      "effects": [
+        { "type": "heal", "value": 30 }
+      ]
+    },
+    {
+      "id": "health_potion_large",
+      "name": "大型生命药水",
+      "type": "consumable",
+      "description": "恢复80点生命值",
+      "icon": "item_potion_red_large",
+      "maxStack": 10,
+      "price": 50,
+      "effects": [
+        { "type": "heal", "value": 80 }
+      ]
+    },
+    {
+      "id": "mana_potion",
+      "name": "魔法药水",
+      "type": "consumable",
+      "description": "恢复50点魔法值",
+      "icon": "item_potion_blue",
+      "maxStack": 10,
+      "price": 30,
+      "effects": [
+        { "type": "restore", "value": 50 }
+      ]
+    },
+    {
+      "id": "essence_common",
+      "name": "怪物精粹",
+      "type": "material",
+      "description": "从普通怪物身上提取的精粹，可在商人处兑换货币",
+      "icon": "item_essence_white",
+      "maxStack": 99,
+      "price": 10
+    },
+    {
+      "id": "essence_plant",
+      "name": "植物精粹",
+      "type": "material",
+      "description": "从植物类怪物身上提取的精粹",
+      "icon": "item_essence_green",
+      "maxStack": 99,
+      "price": 15
+    },
+    {
+      "id": "essence_human",
+      "name": "人类精粹",
+      "type": "material",
+      "description": "从人形敌人身上提取的精粹",
+      "icon": "item_essence_red",
+      "maxStack": 99,
+      "price": 25
+    },
+    {
+      "id": "essence_rare",
+      "name": "稀有精粹",
+      "type": "material",
+      "description": "从精英怪物身上提取的稀有精粹",
+      "icon": "item_essence_purple",
+      "maxStack": 99,
+      "price": 50
+    },
+    {
+      "id": "essence_boss",
+      "name": "Boss精粹",
+      "type": "material",
+      "description": "从Boss身上提取的珍贵精粹",
+      "icon": "item_essence_gold",
+      "maxStack": 99,
+      "price": 200
+    },
+    {
+      "id": "weapon_common",
+      "name": "普通武器",
+      "type": "equipment",
+      "description": "一把普通的武器，攻击力+5",
+      "icon": "item_weapon_common",
+      "maxStack": 1,
+      "price": 100,
+      "equipSlot": "weapon",
+      "stats": {
+        "atk": 5
+      }
+    },
+    {
+      "id": "weapon_rare",
+      "name": "稀有武器",
+      "type": "equipment",
+      "description": "一把精良的武器，攻击力+15，暴击率+5%",
+      "icon": "item_weapon_rare",
+      "maxStack": 1,
+      "price": 500,
+      "equipSlot": "weapon",
+      "stats": {
+        "atk": 15,
+        "critRate": 0.05
+      }
+    },
+    {
+      "id": "armor_light",
+      "name": "轻甲",
+      "type": "equipment",
+      "description": "轻便的护甲，防御力+5",
+      "icon": "item_armor_light",
+      "maxStack": 1,
+      "price": 80,
+      "equipSlot": "armor",
+      "stats": {
+        "def": 5
+      }
+    },
+    {
+      "id": "armor_heavy",
+      "name": "重甲",
+      "type": "equipment",
+      "description": "厚重的护甲，防御力+15，速度-10",
+      "icon": "item_armor_heavy",
+      "maxStack": 1,
+      "price": 200,
+      "equipSlot": "armor",
+      "stats": {
+        "def": 15,
+        "spd": -10
+      }
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>精灵图设计 - [角色名称]</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: sans-serif; background: #1a1a2e; color: #eee; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: #ff6b6b; border-bottom: 2px solid #ff6b6b; padding-bottom: 10px; margin-bottom: 20px; }
+        h2 { color: #4ecdc4; margin: 20px 0 15px; padding-left: 10px; border-left: 3px solid #4ecdc4; }
+
+        .section { background: #16213e; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .info-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .info-item { background: #2a2a4a; padding: 10px 15px; border-radius: 5px; min-width: 150px; }
+
+        .anim-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; }
+        .anim-box { aspect-ratio: 1; background: #2a2a4a; border-radius: 8px; border: 2px solid #0f3460; display: flex; align-items: center; justify-content: center; }
+        .anim-box:hover { border-color: #4ecdc4; }
+
+        .sprite-row { display: flex; gap: 4px; margin: 10px 0; }
+        .sprite-frame { width: 48px; height: 48px; background: #2a2a4a; border: 1px solid #0f3460; display: flex; align-items: center; justify-content: center; }
+        .sprite-frame:hover { border-color: #4ecdc4; }
+
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #0f3460; }
+        th { background: #0f3460; color: #4ecdc4; }
+        td { background: #1a1a2e; }
+
+        .pivot-demo { display: flex; gap: 20px; justify-content: center; margin: 15px 0; }
+        .pivot-box { width: 64px; height: 64px; background: #2a2a4a; border-radius: 8px; position: relative; }
+        .pivot-dot { width: 8px; height: 8px; background: #ff6b6b; border-radius: 50%; position: absolute; }
+
+        .collision-demo { width: 100px; height: 100px; background: #2a2a4a; border-radius: 8px; position: relative; margin: 15px auto; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>精灵图设计 - [角色名称]</h1>
+
+    <!-- 基本信息 -->
+    <div class="section" name="角色信息">
+        <div class="info-row">
+            <div class="info-item" name="角色ID">[ID]</div>
+            <div class="info-item" name="角色类型">[玩家/敌人/NPC]</div>
+        </div>
+    </div>
+
+    <!-- 规格要求 -->
+    <div class="section" name="精灵规格">
+        <div class="info-row">
+            <div class="info-item" name="帧尺寸">[64x64]</div>
+            <div class="info-item" name="输出格式">PNG</div>
+            <div class="info-item" name="方向数">[4方向]</div>
+        </div>
+    </div>
+
+    <!-- 动画清单 -->
+    <h2>动画清单</h2>
+    <div class="section" name="必需动画">
+        <div class="anim-grid">
+            <div class="anim-box" name="idle-待机"></div>
+            <div class="anim-box" name="walk-行走"></div>
+            <div class="anim-box" name="run-奔跑"></div>
+            <div class="anim-box" name="hurt-受伤"></div>
+            <div class="anim-box" name="death-死亡"></div>
+        </div>
+    </div>
+
+    <div class="section" name="战斗动画">
+        <div class="anim-grid">
+            <div class="anim-box" name="attack1-普攻"></div>
+            <div class="anim-box" name="attack2-重击"></div>
+            <div class="anim-box" name="skill-技能"></div>
+            <div class="anim-box" name="dodge-闪避"></div>
+        </div>
+    </div>
+
+    <div class="section" name="交互动画">
+        <div class="anim-grid">
+            <div class="anim-box" name="interact-交互"></div>
+            <div class="anim-box" name="pickup-拾取"></div>
+            <div class="anim-box" name="talk-对话"></div>
+        </div>
+    </div>
+
+    <!-- 动画汇总表 -->
+    <div class="section" name="动画规格表">
+        <table>
+            <tr><th>动画</th><th>帧数</th><th>FPS</th><th>循环</th><th>方向数</th><th>优先级</th></tr>
+            <tr name="idle"><td>idle</td><td>[4]</td><td>[8]</td><td>✓</td><td>[4]</td><td>P0</td></tr>
+            <tr name="walk"><td>walk</td><td>[4]</td><td>[10]</td><td>✓</td><td>[4]</td><td>P0</td></tr>
+            <tr name="run"><td>run</td><td>[4]</td><td>[12]</td><td>✓</td><td>[4]</td><td>P0</td></tr>
+            <tr name="attack"><td>attack</td><td>[4]</td><td>[12]</td><td>✗</td><td>[4]</td><td>P0</td></tr>
+            <tr name="hurt"><td>hurt</td><td>[2]</td><td>[10]</td><td>✗</td><td>[1]</td><td>P0</td></tr>
+            <tr name="death"><td>death</td><td>[4]</td><td>[8]</td><td>✗</td><td>[1]</td><td>P0</td></tr>
+        </table>
+    </div>
+
+    <!-- 精灵表布局 -->
+    <h2>精灵表布局</h2>
+    <div class="section" name="待机动画布局">
+        <p style="color: #4ecdc4; margin-bottom: 10px;">Idle - 方向: Down</p>
+        <div class="sprite-row" name="idle-down帧序列">
+            <div class="sprite-frame" name="帧1"></div>
+            <div class="sprite-frame" name="帧2"></div>
+            <div class="sprite-frame" name="帧3"></div>
+            <div class="sprite-frame" name="帧4"></div>
+        </div>
+    </div>
+
+    <div class="section" name="行走动画布局">
+        <p style="color: #4ecdc4; margin-bottom: 10px;">Walk - 四方向</p>
+        <p style="color: #888; font-size: 12px;">Down</p>
+        <div class="sprite-row" name="walk-down">
+            <div class="sprite-frame"></div><div class="sprite-frame"></div><div class="sprite-frame"></div><div class="sprite-frame"></div>
+        </div>
+        <p style="color: #888; font-size: 12px;">Up</p>
+        <div class="sprite-row" name="walk-up">
+            <div class="sprite-frame"></div><div class="sprite-frame"></div><div class="sprite-frame"></div><div class="sprite-frame"></div>
+        </div>
+        <p style="color: #888; font-size: 12px;">Left</p>
+        <div class="sprite-row" name="walk-left">
+            <div class="sprite-frame"></div><div class="sprite-frame"></div><div class="sprite-frame"></div><div class="sprite-frame"></div>
+        </div>
+        <p style="color: #888; font-size: 12px;">Right</p>
+        <div class="sprite-row" name="walk-right">
+            <div class="sprite-frame"></div><div class="sprite-frame"></div><div class="sprite-frame"></div><div class="sprite-frame"></div>
+        </div>
+    </div>
+
+    <!-- 帧说明 -->
+    <h2>帧详细说明</h2>
+    <div class="section" name="待机帧分解">
+        <table>
+            <tr><th>帧</th><th>姿势</th><th>重心</th><th>呼吸</th></tr>
+            <tr name="帧1"><td>1</td><td>[基础站姿]</td><td>[居中]</td><td>[正常]</td></tr>
+            <tr name="帧2"><td>2</td><td>[轻微前倾]</td><td>[微前]</td><td>[吸气]</td></tr>
+            <tr name="帧3"><td>3</td><td>[回到基础]</td><td>[居中]</td><td>[正常]</td></tr>
+            <tr name="帧4"><td>4</td><td>[轻微后仰]</td><td>[微后]</td><td>[呼气]</td></tr>
+        </table>
+    </div>
+
+    <div class="section" name="攻击帧分解">
+        <table>
+            <tr><th>帧</th><th>动作</th><th>判定</th></tr>
+            <tr name="蓄力帧"><td>1</td><td>[蓄力]</td><td>-</td></tr>
+            <tr name="挥砍帧"><td>2</td><td>[挥砍]</td><td>-</td></tr>
+            <tr name="命中帧"><td>3</td><td>[命中点]</td><td>★ 命中判定</td></tr>
+            <tr name="收招帧"><td>4</td><td>[收招]</td><td>-</td></tr>
+        </table>
+    </div>
+
+    <!-- 锚点与碰撞 -->
+    <h2>锚点与碰撞</h2>
+    <div class="section" name="锚点位置">
+        <div class="pivot-demo">
+            <div>
+                <div class="pivot-box" name="锚点-底部中心">
+                    <div class="pivot-dot" style="left: 50%; top: 100%; transform: translate(-50%, -50%);"></div>
+                </div>
+                <p style="text-align: center; color: #888; font-size: 11px; margin-top: 5px;">底部中心(推荐)</p>
+            </div>
+            <div>
+                <div class="pivot-box" name="锚点-中心">
+                    <div class="pivot-dot" style="left: 50%; top: 50%; transform: translate(-50%, -50%);"></div>
+                </div>
+                <p style="text-align: center; color: #888; font-size: 11px; margin-top: 5px;">中心</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" name="碰撞框">
+        <div class="collision-demo" name="碰撞框示意">
+            <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 32px; height: 48px; border: 2px solid #ff6b6b;" name="主体碰撞"></div>
+            <div style="position: absolute; left: 60%; top: 50%; transform: translate(-50%, -50%); width: 48px; height: 32px; border: 2px dashed #ffe66d;" name="攻击范围"></div>
+        </div>
+        <table style="margin-top: 15px;">
+            <tr><th>类型</th><th>尺寸</th><th>偏移</th><th>用途</th></tr>
+            <tr name="主体碰撞"><td>主体碰撞</td><td>[32x48]</td><td>[16,16]</td><td>受击判定</td></tr>
+            <tr name="攻击范围"><td>攻击范围</td><td>[48x32]</td><td>[32,32]</td><td>攻击判定</td></tr>
+        </table>
+    </div>
+
+    <!-- 输出清单 -->
+    <h2>输出清单</h2>
+    <div class="section" name="输出文件">
+        <table>
+            <tr><th>文件名</th><th>内容</th><th>尺寸</th><th>优先级</th></tr>
+            <tr name="idle"><td>[ID]_idle_*.png</td><td>待机(4方向)</td><td>256x64 each</td><td>P0</td></tr>
+            <tr name="walk"><td>[ID]_walk_*.png</td><td>行走(4方向)</td><td>256x64 each</td><td>P0</td></tr>
+            <tr name="attack"><td>[ID]_attack_*.png</td><td>攻击(4方向)</td><td>256x64 each</td><td>P0</td></tr>
+            <tr name="hurt"><td>[ID]_hurt.png</td><td>受伤</td><td>128x64</td><td>P0</td></tr>
+            <tr name="death"><td>[ID]_death.png</td><td>死亡</td><td>256x64</td><td>P0</td></tr>
+            <tr name="psd"><td>[ID]_sprites.psd</td><td>分层源文件</td><td>-</td><td>P1</td></tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>精灵图设计 - 魔法主角</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft YaHei', sans-serif; background: #1a1a2e; color: #eee; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: #ff6b6b; border-bottom: 2px solid #ff6b6b; padding-bottom: 10px; margin-bottom: 20px; }
+        h2 { color: #4ecdc4; margin: 20px 0 15px; padding-left: 10px; border-left: 3px solid #4ecdc4; }
+        h3 { color: #a855f7; font-size: 14px; margin: 15px 0 10px; }
+
+        .section { background: #16213e; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .info-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .info-item { background: #2a2a4a; padding: 10px 15px; border-radius: 5px; min-width: 150px; }
+        .info-item::before { content: attr(name); display: block; font-size: 11px; color: #888; margin-bottom: 5px; }
+
+        .anim-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; }
+        .anim-box { aspect-ratio: 1; background: #2a2a4a; border-radius: 8px; border: 2px solid #0f3460; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #888; font-size: 11px; padding: 10px; }
+        .anim-box:hover { border-color: #4ecdc4; color: #4ecdc4; }
+        .anim-box .frames { font-size: 10px; color: #666; margin-top: 5px; }
+        .anim-box.p0 { border-color: #ff6b6b; }
+        .anim-box.p1 { border-color: #ffe66d; }
+
+        .sprite-row { display: flex; gap: 4px; margin: 10px 0; align-items: center; }
+        .sprite-frame { width: 64px; height: 64px; background: #2a2a4a; border: 1px solid #0f3460; display: flex; align-items: center; justify-content: center; color: #555; font-size: 10px; }
+        .sprite-frame:hover { border-color: #4ecdc4; }
+        .sprite-frame.active { border-color: #a855f7; background: #1e1b4b; }
+
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #0f3460; }
+        th { background: #0f3460; color: #4ecdc4; }
+        td { background: #1a1a2e; }
+
+        .pivot-demo { display: flex; gap: 30px; justify-content: center; margin: 20px 0; }
+        .pivot-box { width: 80px; height: 80px; background: #2a2a4a; border-radius: 8px; position: relative; border: 2px solid #0f3460; }
+        .pivot-dot { width: 10px; height: 10px; background: #ff6b6b; border-radius: 50%; position: absolute; box-shadow: 0 0 10px #ff6b6b; }
+
+        .collision-demo { width: 120px; height: 120px; background: #2a2a4a; border-radius: 8px; position: relative; margin: 15px auto; border: 2px solid #0f3460; }
+
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; margin-left: 5px; }
+        .tag.p0 { background: #ff6b6b; color: #fff; }
+        .tag.p1 { background: #ffe66d; color: #1a1a2e; }
+        .tag.loop { background: #4ecdc4; color: #1a1a2e; }
+
+        .direction-label { font-size: 11px; color: #888; margin: 5px 0 3px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>精灵图设计 - 魔法主角 (player_002)</h1>
+
+    <!-- 基本信息 -->
+    <div class="section" name="角色信息">
+        <div class="info-row">
+            <div class="info-item" name="角色ID">player_002</div>
+            <div class="info-item" name="角色类型">玩家角色 · 远程法师</div>
+            <div class="info-item" name="战斗风格">远程魔法攻击</div>
+            <div class="info-item" name="特殊机制">冥想恢复MP</div>
+        </div>
+    </div>
+
+    <!-- 规格要求 -->
+    <div class="section" name="精灵规格">
+        <div class="info-row">
+            <div class="info-item" name="帧尺寸">64 × 64 px</div>
+            <div class="info-item" name="输出格式">PNG (透明背景)</div>
+            <div class="info-item" name="方向数">8方向 (或4方向+翻转)</div>
+            <div class="info-item" name="总帧数">约100帧</div>
+            <div class="info-item" name="帧率">12 FPS (战斗) / 8 FPS (待机)</div>
+        </div>
+    </div>
+
+    <!-- 动画清单 -->
+    <h2>动画清单</h2>
+
+    <div class="section" name="基础动画">
+        <h3>基础动画 <span class="tag p0">P0 必需</span></h3>
+        <div class="anim-grid">
+            <div class="anim-box p0">
+                idle<br>待机
+                <span class="frames">6帧 × 8方向</span>
+                <span class="tag loop">循环</span>
+            </div>
+            <div class="anim-box p0">
+                walk<br>行走
+                <span class="frames">8帧 × 8方向</span>
+                <span class="tag loop">循环</span>
+            </div>
+            <div class="anim-box p0">
+                run<br>奔跑
+                <span class="frames">6帧 × 8方向</span>
+                <span class="tag loop">循环</span>
+            </div>
+            <div class="anim-box p0">
+                dodge<br>闪避
+                <span class="frames">6帧 × 8方向</span>
+            </div>
+            <div class="anim-box p0">
+                hurt<br>受伤
+                <span class="frames">4帧 × 1方向</span>
+            </div>
+            <div class="anim-box p0">
+                death<br>死亡
+                <span class="frames">8帧 × 1方向</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" name="攻击动画">
+        <h3>攻击动画 <span class="tag p0">P0 必需</span></h3>
+        <div class="anim-grid">
+            <div class="anim-box p0">
+                cast_basic<br>基础施法
+                <span class="frames">8帧 × 8方向</span>
+            </div>
+            <div class="anim-box p0">
+                cast_charge<br>蓄力施法
+                <span class="frames">10帧 × 8方向</span>
+            </div>
+            <div class="anim-box p0">
+                skill_1<br>彩虹射线
+                <span class="frames">10帧 × 8方向</span>
+            </div>
+            <div class="anim-box p0">
+                skill_2<br>冰霜陷阱
+                <span class="frames">10帧 × 8方向</span>
+            </div>
+            <div class="anim-box p0">
+                ultimate<br>秘术风暴
+                <span class="frames">12帧 × 8方向</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" name="特殊动画">
+        <h3>特殊动画 <span class="tag p1">P1 重要</span></h3>
+        <div class="anim-grid">
+            <div class="anim-box p1">
+                meditate<br>冥想
+                <span class="frames">8帧 × 4方向</span>
+                <span class="tag loop">循环</span>
+            </div>
+            <div class="anim-box p1">
+                interact<br>交互
+                <span class="frames">6帧 × 4方向</span>
+            </div>
+            <div class="anim-box p1">
+                pickup<br>拾取
+                <span class="frames">6帧 × 4方向</span>
+            </div>
+            <div class="anim-box p1">
+                victory<br>胜利
+                <span class="frames">8帧 × 1方向</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 动画汇总表 -->
+    <div class="section" name="动画规格表">
+        <table>
+            <tr><th>动画名称</th><th>帧数</th><th>方向</th><th>FPS</th><th>循环</th><th>总帧数</th><th>优先级</th></tr>
+            <tr><td>idle (待机)</td><td>6</td><td>8</td><td>8</td><td>✓</td><td>48</td><td>P0</td></tr>
+            <tr><td>walk (行走)</td><td>8</td><td>8</td><td>10</td><td>✓</td><td>64</td><td>P0</td></tr>
+            <tr><td>run (奔跑)</td><td>6</td><td>8</td><td>12</td><td>✓</td><td>48</td><td>P0</td></tr>
+            <tr><td>dodge (闪避)</td><td>6</td><td>8</td><td>12</td><td>✗</td><td>48</td><td>P0</td></tr>
+            <tr><td>cast_basic (基础施法)</td><td>8</td><td>8</td><td>12</td><td>✗</td><td>64</td><td>P0</td></tr>
+            <tr><td>cast_charge (蓄力施法)</td><td>10</td><td>8</td><td>12</td><td>✗</td><td>80</td><td>P0</td></tr>
+            <tr><td>skill_1 (彩虹射线)</td><td>10</td><td>8</td><td>12</td><td>✗</td><td>80</td><td>P0</td></tr>
+            <tr><td>skill_2 (冰霜陷阱)</td><td>10</td><td>8</td><td>12</td><td>✗</td><td>80</td><td>P0</td></tr>
+            <tr><td>ultimate (秘术风暴)</td><td>12</td><td>8</td><td>12</td><td>✗</td><td>96</td><td>P0</td></tr>
+            <tr><td>hurt (受伤)</td><td>4</td><td>1</td><td>10</td><td>✗</td><td>4</td><td>P0</td></tr>
+            <tr><td>death (死亡)</td><td>8</td><td>1</td><td>8</td><td>✗</td><td>8</td><td>P0</td></tr>
+            <tr><td>meditate (冥想)</td><td>8</td><td>4</td><td>8</td><td>✓</td><td>32</td><td>P1</td></tr>
+            <tr><td>interact (交互)</td><td>6</td><td>4</td><td>10</td><td>✗</td><td>24</td><td>P1</td></tr>
+            <tr><td>pickup (拾取)</td><td>6</td><td>4</td><td>10</td><td>✗</td><td>24</td><td>P1</td></tr>
+            <tr><td>victory (胜利)</td><td>8</td><td>1</td><td>10</td><td>✗</td><td>8</td><td>P1</td></tr>
+        </table>
+        <p style="color: #888; font-size: 12px; margin-top: 10px;">
+            <strong>P0 总帧数：</strong>620帧（8方向）| <strong>P1 总帧数：</strong>88帧 | <strong>合计：</strong>约708帧
+        </p>
+    </div>
+
+    <!-- 精灵表布局 -->
+    <h2>精灵表布局示例</h2>
+
+    <div class="section" name="待机动画布局">
+        <p style="color: #4ecdc4; margin-bottom: 10px;">Idle (待机) - 6帧 × 8方向 = 48帧</p>
+
+        <p class="direction-label">↓ Down (下)</p>
+        <div class="sprite-row">
+            <div class="sprite-frame">1</div>
+            <div class="sprite-frame">2</div>
+            <div class="sprite-frame">3</div>
+            <div class="sprite-frame">4</div>
+            <div class="sprite-frame">5</div>
+            <div class="sprite-frame">6</div>
+        </div>
+
+        <p class="direction-label">↓ Left (左)</p>
+        <div class="sprite-row">
+            <div class="sprite-frame">1</div>
+            <div class="sprite-frame">2</div>
+            <div class="sprite-frame">3</div>
+            <div class="sprite-frame">4</div>
+            <div class="sprite-frame">5</div>
+            <div class="sprite-frame">6</div>
+        </div>
+
+        <p class="direction-label">↓ Right (右) - 可由Left水平翻转</p>
+        <div class="sprite-row">
+            <div class="sprite-frame">1</div>
+            <div class="sprite-frame">2</div>
+            <div class="sprite-frame">3</div>
+            <div class="sprite-frame">4</div>
+            <div class="sprite-frame">5</div>
+            <div class="sprite-frame">6</div>
+        </div>
+
+        <p class="direction-label">↓ Up (上)</p>
+        <div class="sprite-row">
+            <div class="sprite-frame">1</div>
+            <div class="sprite-frame">2</div>
+            <div class="sprite-frame">3</div>
+            <div class="sprite-frame">4</div>
+            <div class="sprite-frame">5</div>
+            <div class="sprite-frame">6</div>
+        </div>
+    </div>
+
+    <div class="section" name="施法动画布局">
+        <p style="color: #4ecdc4; margin-bottom: 10px;">Cast_Basic (基础施法) - 8帧</p>
+        <div class="sprite-row">
+            <div class="sprite-frame">1<br>准备</div>
+            <div class="sprite-frame">2<br>抬手</div>
+            <div class="sprite-frame">3<br>蓄力</div>
+            <div class="sprite-frame active">4<br>★释放</div>
+            <div class="sprite-frame active">5<br>★命中</div>
+            <div class="sprite-frame">6<br>余韵</div>
+            <div class="sprite-frame">7<br>收招</div>
+            <div class="sprite-frame">8<br>结束</div>
+        </div>
+        <p style="color: #888; font-size: 11px; margin-top: 10px;">
+            ★ 帧4-5为魔法释放判定帧，需与特效同步
+        </p>
+    </div>
+
+    <!-- 帧说明 -->
+    <h2>帧详细说明</h2>
+
+    <div class="section" name="待机帧分解">
+        <h3>Idle (待机) 帧分解</h3>
+        <table>
+            <tr><th>帧</th><th>姿势描述</th><th>重心</th><th>呼吸</th><th>魔法效果</th></tr>
+            <tr><td>1</td><td>基础站姿，双手自然下垂</td><td>居中</td><td>正常</td><td>轻微光点</td></tr>
+            <tr><td>2</td><td>身体微前倾，头发飘动</td><td>微前</td><td>吸气</td><td>光点增多</td></tr>
+            <tr><td>3</td><td>回到基础，手微抬起</td><td>居中</td><td>正常</td><td>光点环绕</td></tr>
+            <tr><td>4</td><td>身体微后仰，法袍飘动</td><td>微后</td><td>呼气</td><td>光点最亮</td></tr>
+            <tr><td>5</td><td>回到中间，头发落下</td><td>居中</td><td>正常</td><td>光点减少</td></tr>
+            <tr><td>6</td><td>完全回到基础姿势</td><td>居中</td><td>正常</td><td>轻微光点</td></tr>
+        </table>
+    </div>
+
+    <div class="section" name="施法帧分解">
+        <h3>Cast_Basic (基础施法) 帧分解</h3>
+        <table>
+            <tr><th>帧</th><th>动作描述</th><th>判定</th><th>特效建议</th></tr>
+            <tr><td>1</td><td>准备姿势，重心下沉</td><td>-</td><td>手部开始聚集光点</td></tr>
+            <tr><td>2</td><td>右手抬起，左手辅助</td><td>-</td><td>光球成型</td></tr>
+            <tr><td>3</td><td>蓄力，身体后仰</td><td>-</td><td>光球变大，彩虹色</td></tr>
+            <tr><td>4</td><td>向前释放，身体前倾</td><td>★ 释放判定</td><td>魔法射出</td></tr>
+            <tr><td>5</td><td>命中瞬间，手臂伸展</td><td>★ 命中判定</td><td>爆炸/命中特效</td></tr>
+            <tr><td>6</td><td>余韵，手臂微曲</td><td>-</td><td>残光消散</td></tr>
+            <tr><td>7</td><td>收招，手臂放下</td><td>-</td><td>光点消失</td></tr>
+            <tr><td>8</td><td>回到待机姿势</td><td>-</td><td>-</td></tr>
+        </table>
+    </div>
+
+    <div class="section" name="冥想帧分解">
+        <h3>Meditate (冥想) 帧分解 - 魔法主角专属</h3>
+        <table>
+            <tr><th>帧</th><th>动作描述</th><th>MP恢复</th><th>特效建议</th></tr>
+            <tr><td>1</td><td>盘腿坐下，双手放膝</td><td>-</td><td>脚下出现魔法阵</td></tr>
+            <tr><td>2</td><td>闭眼，身体放松</td><td>开始恢复</td><td>魔法阵亮起</td></tr>
+            <tr><td>3</td><td>深呼吸，身体微晃</td><td>持续恢复</td><td>彩虹光柱升起</td></tr>
+            <tr><td>4</td><td>悬浮，离地</td><td>持续恢复</td><td>光柱环绕全身</td></tr>
+            <tr><td>5</td><td>最高悬浮点</td><td>恢复加快</td><td>光柱最亮</td></tr>
+            <tr><td>6</td><td>缓慢下降</td><td>持续恢复</td><td>光柱减弱</td></tr>
+            <tr><td>7</td><td>接近地面</td><td>持续恢复</td><td>光柱消失</td></tr>
+            <tr><td>8</td><td>回到坐姿</td><td>持续恢复</td><td>魔法阵闪烁</td></tr>
+        </table>
+        <p style="color: #888; font-size: 11px; margin-top: 10px;">
+            冥想为循环动画，按住R键持续播放，松开或移动立即中断
+        </p>
+    </div>
+
+    <!-- 锚点与碰撞 -->
+    <h2>锚点与碰撞</h2>
+
+    <div class="section" name="锚点位置">
+        <div class="pivot-demo">
+            <div>
+                <div class="pivot-box">
+                    <div class="pivot-dot" style="left: 50%; top: 100%; transform: translate(-50%, -50%);"></div>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 56px; border: 1px dashed #666; border-radius: 4px;"></div>
+                </div>
+                <p style="text-align: center; color: #888; font-size: 11px; margin-top: 8px;">底部中心 (推荐)</p>
+            </div>
+            <div>
+                <div class="pivot-box">
+                    <div class="pivot-dot" style="left: 50%; top: 75%; transform: translate(-50%, -50%);"></div>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 56px; border: 1px dashed #666; border-radius: 4px;"></div>
+                </div>
+                <p style="text-align: center; color: #888; font-size: 11px; margin-top: 8px;">底部偏上</p>
+            </div>
+        </div>
+        <p style="color: #ffe66d; font-size: 12px; text-align: center;">建议使用底部中心锚点 (32, 64)，便于对齐地面</p>
+    </div>
+
+    <div class="section" name="碰撞框">
+        <div class="collision-demo">
+            <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 32px; height: 48px; border: 2px solid #ff6b6b;" name="主体碰撞"></div>
+            <div style="position: absolute; left: 70%; top: 40%; transform: translate(-50%, -50%); width: 64px; height: 24px; border: 2px dashed #4ecdc4;" name="远程攻击判定"></div>
+        </div>
+        <table style="margin-top: 15px;">
+            <tr><th>类型</th><th>尺寸</th><th>偏移 (从锚点)</th><th>用途</th></tr>
+            <tr><td style="color: #ff6b6b;">主体碰撞</td><td>32 × 48 px</td><td>(-16, -48)</td><td>受击判定、物理碰撞</td></tr>
+            <tr><td style="color: #4ecdc4;">远程攻击判定</td><td>64 × 24 px</td><td>(0, -32)</td><td>魔法攻击判定区域</td></tr>
+            <tr><td style="color: #ffe66d;">交互范围</td><td>48 × 48 px</td><td>(0, -32)</td><td>拾取物品、NPC交互</td></tr>
+        </table>
+    </div>
+
+    <!-- 输出清单 -->
+    <h2>输出清单</h2>
+    <div class="section" name="输出文件">
+        <table>
+            <tr><th>文件名</th><th>内容</th><th>精灵表尺寸</th><th>优先级</th></tr>
+            <tr><td>player_002_idle.png</td><td>待机 (6帧×8方向)</td><td>384×512 px</td><td>P0</td></tr>
+            <tr><td>player_002_walk.png</td><td>行走 (8帧×8方向)</td><td>512×512 px</td><td>P0</td></tr>
+            <tr><td>player_002_run.png</td><td>奔跑 (6帧×8方向)</td><td>384×512 px</td><td>P0</td></tr>
+            <tr><td>player_002_dodge.png</td><td>闪避 (6帧×8方向)</td><td>384×512 px</td><td>P0</td></tr>
+            <tr><td>player_002_cast_basic.png</td><td>基础施法 (8帧×8方向)</td><td>512×512 px</td><td>P0</td></tr>
+            <tr><td>player_002_cast_charge.png</td><td>蓄力施法 (10帧×8方向)</td><td>640×512 px</td><td>P0</td></tr>
+            <tr><td>player_002_skill_1.png</td><td>技能1-彩虹射线 (10帧×8方向)</td><td>640×512 px</td><td>P0</td></tr>
+            <tr><td>player_002_skill_2.png</td><td>技能2-冰霜陷阱 (10帧×8方向)</td><td>640×512 px</td><td>P0</td></tr>
+            <tr><td>player_002_ultimate.png</td><td>终极技能 (12帧×8方向)</td><td>768×512 px</td><td>P0</td></tr>
+            <tr><td>player_002_hurt.png</td><td>受伤 (4帧)</td><td>256×64 px</td><td>P0</td></tr>
+            <tr><td>player_002_death.png</td><td>死亡 (8帧)</td><td>512×64 px</td><td>P0</td></tr>
+            <tr><td>player_002_meditate.png</td><td>冥想 (8帧×4方向)</td><td>512×256 px</td><td>P1</td></tr>
+            <tr><td>player_002_interact.png</td><td>交互 (6帧×4方向)</td><td>384×256 px</td><td>P1</td></tr>
+            <tr><td>player_002_pickup.png</td><td>拾取 (6帧×4方向)</td><td>384×256 px</td><td>P1</td></tr>
+            <tr><td>player_002_victory.png</td><td>胜利 (8帧)</td><td>512×64 px</td><td>P1</td></tr>
+            <tr><td>player_002_sprites.psd</td><td>分层源文件</td><td>-</td><td>P1</td></tr>
+        </table>
+    </div>
+
+    <!-- 注意事项 -->
+    <h2>美术注意事项</h2>
+    <div class="section" name="注意事项">
+        <ul style="color: #aaa; line-height: 1.8; padding-left: 20px;">
+            <li><strong style="color: #4ecdc4;">彩虹色表现：</strong>发色和魔法效果使用彩虹渐变，注意各帧之间的颜色连贯性</li>
+            <li><strong style="color: #4ecdc4;">法袍飘动：</strong>施法和移动时，法袍和披风应有明显的飘动效果</li>
+            <li><strong style="color: #4ecdc4;">魔法光效：</strong>精灵图中可包含简单的魔法光点，复杂特效由引擎粒子系统实现</li>
+            <li><strong style="color: #4ecdc4;">方向一致性：</strong>8方向动画中，角色的朝向和重心要保持一致</li>
+            <li><strong style="color: #4ecdc4;">帧边界：</strong>角色主体保持在64×64帧内，魔法特效可适当溢出</li>
+            <li><strong style="color: #4ecdc4;">异色瞳：</strong>在精灵图小尺寸下，可简化为左眼偏蓝、右眼偏紫</li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

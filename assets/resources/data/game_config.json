@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "description": "游戏全局配置",
+  "game": {
+    "name": "废土之战",
+    "version": "0.1.0",
+    "targetFps": 60,
+    "resolution": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "combat": {
+    "defaultCritMultiplier": 1.5,
+    "defenseCoefficient": 100,
+    "invincibilityTime": 0.5,
+    "defaultKnockbackForce": 200,
+    "maxStatusEffects": 5
+  },
+  "player": {
+    "dodge": {
+      "cooldown": 1.5,
+      "distance": 150,
+      "invincibilityTime": 0.3
+    },
+    "skill": {
+      "defaultCooldown": 5,
+      "ultimateCooldown": 30,
+      "meditateMpRecovery": 10,
+      "reloadTime": 1.5
+    }
+  },
+  "ai": {
+    "defaultDetectRange": 300,
+    "defaultAttackRange": 50,
+    "defaultPatrolRange": 100,
+    "fleeHealthPercent": 0.2,
+    "enrageHealthPercent": 0.3,
+    "patrolWaitTime": 2,
+    "attackInterval": 1.5
+  },
+  "dungeon": {
+    "defaultRoomCount": 7,
+    "hiddenRoomChance": 0.2,
+    "eliteRoomCount": 1,
+    "roomClearReward": 50
+  },
+  "economy": {
+    "initialCurrency": 100,
+    "maxCurrency": 99999,
+    "essenceToCurrencyRatio": 0.1
+  },
+  "audio": {
+    "defaultBgmVolume": 0.8,
+    "defaultSfxVolume": 1.0,
+    "sfxPoolSize": 10,
+    "bgmFadeInTime": 1.0,
+    "bgmFadeOutTime": 1.0
+  },
+  "ui": {
+    "interactPromptDistance": 80,
+    "damageNumberDuration": 1.5,
+    "dialogTypeSpeed": 0.03,
+    "hudUpdateInterval": 0.1
+  }
+}

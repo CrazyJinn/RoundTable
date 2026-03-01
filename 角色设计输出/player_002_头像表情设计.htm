@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>头像表情设计 - 魔法主角</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft YaHei', sans-serif; background: #1a1a2e; color: #eee; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #ff6b6b; border-bottom: 2px solid #ff6b6b; padding-bottom: 10px; margin-bottom: 20px; }
+        h2 { color: #4ecdc4; margin: 20px 0 15px; padding-left: 10px; border-left: 3px solid #4ecdc4; }
+
+        .section { background: #16213e; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .info-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .info-item { background: #2a2a4a; padding: 10px 15px; border-radius: 5px; min-width: 150px; }
+        .info-item::before { content: attr(name); display: block; font-size: 11px; color: #888; margin-bottom: 5px; }
+
+        .avatar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 15px; }
+        .avatar-frame { aspect-ratio: 1; background: #2a2a4a; border-radius: 50%; border: 2px solid #4ecdc4; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #666; font-size: 11px; }
+        .avatar-frame:hover { border-color: #ffe66d; }
+        .avatar-frame .name { margin-top: 5px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #0f3460; }
+        th { background: #0f3460; color: #4ecdc4; }
+        td { background: #1a1a2e; }
+
+        .color-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+        .color-dot { width: 40px; height: 40px; border-radius: 50%; border: 2px solid transparent; position: relative; }
+        .color-dot:hover { border-color: #fff; }
+        .color-dot::after { content: attr(name); position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); font-size: 9px; white-space: nowrap; color: #888; }
+
+        .part-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .part-box { background: #2a2a4a; border-radius: 8px; padding: 20px; text-align: center; border: 2px solid transparent; }
+        .part-box:hover { border-color: #4ecdc4; }
+        .part-box h4 { color: #4ecdc4; margin-bottom: 10px; }
+        .part-box p { font-size: 12px; color: #aaa; }
+
+        .split-view { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 700px) { .split-view { grid-template-columns: 1fr; } }
+
+        .tag { display: inline-block; background: #a855f7; color: #fff; padding: 2px 8px; border-radius: 3px; font-size: 10px; margin-left: 5px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>头像表情设计 - 魔法主角 (player_002)</h1>
+
+    <!-- 基本信息 -->
+    <div class="section" name="角色信息">
+        <div class="info-row">
+            <div class="info-item" name="角色ID">player_002</div>
+            <div class="info-item" name="角色名称">魔法主角</div>
+            <div class="info-item" name="用途">对话系统 / UI界面 / 状态显示</div>
+            <div class="info-item" name="画风">手绘风格</div>
+        </div>
+    </div>
+
+    <!-- 规格要求 -->
+    <div class="section" name="规格要求">
+        <div class="info-row">
+            <div class="info-item" name="头像尺寸">128 × 128 px</div>
+            <div class="info-item" name="输出格式">PNG (透明背景)</div>
+            <div class="info-item" name="表情数量">12种</div>
+            <div class="info-item" name="圆形裁剪">支持</div>
+        </div>
+    </div>
+
+    <!-- 基础头像 -->
+    <h2>基础头像</h2>
+    <div class="section">
+        <div class="split-view">
+            <div style="display: flex; justify-content: center; align-items: center; min-height: 200px;">
+                <div class="avatar-frame" name="默认头像" style="width: 160px; height: 160px; font-size: 14px;">
+                    默认头像<br>
+                    <span style="font-size: 10px; color: #555;">128×128 px</span>
+                </div>
+            </div>
+            <div>
+                <table name="构图要点">
+                    <tr><th>项目</th><th>说明</th></tr>
+                    <tr><td>裁剪范围</td><td>肩上特写，包含颈部和部分肩膀</td></tr>
+                    <tr><td>面部位置</td><td>面部居中偏上，眼睛位于画面上1/3处</td></tr>
+                    <tr><td>朝向</td><td>微微侧身（15°），面向观众</td></tr>
+                    <tr><td>发型处理</td><td>彩虹渐变发丝需完整呈现，飘逸感</td></tr>
+                    <tr><td>特征强调</td><td>异色瞳（左彩虹/右紫）、法力纹身可见</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 面部特征 -->
+    <h2>面部特征基准</h2>
+    <div class="section" name="面部特征基准">
+        <div class="part-grid">
+            <div class="part-box" name="眼睛特征">
+                <h4>眼睛</h4>
+                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #1a1a2e, #2a2a4a); border-radius: 50%; margin: 0 auto 10px; border: 2px solid #a855f7;"></div>
+                <p>异色瞳：左眼彩虹渐变色<br>右眼深紫色<br>瞳孔中有魔法符文闪烁</p>
+            </div>
+            <div class="part-box" name="眉毛特征">
+                <h4>眉毛</h4>
+                <div style="width: 50px; height: 20px; background: linear-gradient(90deg, #7C3AED, #2563EB); border-radius: 10px; margin: 15px auto;"></div>
+                <p>纤细柔和<br>彩虹渐变色（与发色一致）<br>表情变化时幅度适中</p>
+            </div>
+            <div class="part-box" name="嘴巴特征">
+                <h4>嘴巴</h4>
+                <div style="width: 30px; height: 15px; background: #E9D5FF; border-radius: 8px; margin: 15px auto;"></div>
+                <p>唇色淡紫<br>嘴角可微微下垂（忧郁感）<br>表情变化幅度细腻</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 表情列表 -->
+    <h2>表情列表</h2>
+    <div class="section" name="基础表情">
+        <h3 style="color: #4ecdc4; font-size: 14px; margin-bottom: 10px;">基础表情 (P0 - 必需)</h3>
+        <div class="avatar-grid">
+            <div class="avatar-frame" name="neutral">
+                默认<br><span class="name">neutral</span>
+                <span class="tag">P0</span>
+            </div>
+            <div class="avatar-frame" name="happy">
+                高兴<br><span class="name">happy</span>
+                <span class="tag">P0</span>
+            </div>
+            <div class="avatar-frame" name="angry">
+                愤怒<br><span class="name">angry</span>
+                <span class="tag">P0</span>
+            </div>
+            <div class="avatar-frame" name="sad">
+                悲伤<br><span class="name">sad</span>
+                <span class="tag">P0</span>
+            </div>
+            <div class="avatar-frame" name="hurt">
+                受伤<br><span class="name">hurt</span>
+                <span class="tag">P0</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" name="扩展表情">
+        <h3 style="color: #4ecdc4; font-size: 14px; margin-bottom: 10px;">扩展表情 (P1 - 重要)</h3>
+        <div class="avatar-grid">
+            <div class="avatar-frame" name="surprised">
+                惊讶<br><span class="name">surprised</span>
+            </div>
+            <div class="avatar-frame" name="thinking">
+                思考<br><span class="name">thinking</span>
+            </div>
+            <div class="avatar-frame" name="worried">
+                担心<br><span class="name">worried</span>
+            </div>
+            <div class="avatar-frame" name="guilty">
+                愧疚<br><span class="name">guilty</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" name="特殊表情">
+        <h3 style="color: #4ecdc4; font-size: 14px; margin-bottom: 10px;">特殊表情 (P1 - 战斗/剧情)</h3>
+        <div class="avatar-grid">
+            <div class="avatar-frame" name="casting">
+                施法中<br><span class="name">casting</span>
+            </div>
+            <div class="avatar-frame" name="combat">
+                战斗<br><span class="name">combat</span>
+            </div>
+            <div class="avatar-frame" name="determined">
+                坚定<br><span class="name">determined</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 表情变化对照 -->
+    <h2>表情变化对照</h2>
+    <div class="section" name="五官变化表">
+        <table>
+            <tr><th>表情</th><th>眉毛</th><th>眼睛</th><th>嘴巴</th><th>其他特征</th></tr>
+            <tr>
+                <td>默认 (neutral)</td>
+                <td>自然平直，微微下弯</td>
+                <td>正常睁开，目光平静略带忧郁</td>
+                <td>轻闭，嘴角平直微下</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>高兴 (happy)</td>
+                <td>微微上扬</td>
+                <td>弯成月牙形，眼角有笑纹</td>
+                <td>微笑，嘴角上扬</td>
+                <td>淡淡腮红</td>
+            </tr>
+            <tr>
+                <td>愤怒 (angry)</td>
+                <td>紧皱，内侧下压</td>
+                <td>瞪大，瞳孔收缩</td>
+                <td>紧抿，嘴角下拉</td>
+                <td>眼中魔法符文闪亮</td>
+            </tr>
+            <tr>
+                <td>悲伤 (sad)</td>
+                <td>下垂，内侧上扬</td>
+                <td>半垂，眼眶含泪</td>
+                <td>微张，嘴角下弯</td>
+                <td>泪滴可能滑落</td>
+            </tr>
+            <tr>
+                <td>受伤 (hurt)</td>
+                <td>紧皱</td>
+                <td>紧闭或半睁</td>
+                <td>咬牙</td>
+                <td>冷汗，面部有污渍</td>
+            </tr>
+            <tr>
+                <td>惊讶 (surprised)</td>
+                <td>高挑</td>
+                <td>最大程度睁开</td>
+                <td>O型微张</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>愧疚 (guilty)</td>
+                <td>下垂，微皱</td>
+                <td>避开视线，半垂</td>
+                <td>紧抿</td>
+                <td>阴影遮住部分面部</td>
+            </tr>
+            <tr>
+                <td>施法 (casting)</td>
+                <td>专注平直</td>
+                <td>睁大，瞳孔发光</td>
+                <td>轻念咒语</td>
+                <td>眼周法力纹路亮起</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 配色 -->
+    <h2>配色参考</h2>
+    <div class="section" name="面部配色">
+        <div class="color-row">
+            <div class="color-dot" name="肤色" style="background: #FDF4FF;"></div>
+            <div class="color-dot" name="肤色阴影" style="background: #E9D5FF;"></div>
+            <div class="color-dot" name="腮红" style="background: #FECDD3;"></div>
+            <div class="color-dot" name="发色" style="background: linear-gradient(90deg, #7C3AED, #2563EB, #06B6D4);"></div>
+            <div class="color-dot" name="瞳色-左" style="background: linear-gradient(135deg, #ff6b6b, #ffe66d, #4ecdc4);"></div>
+            <div class="color-dot" name="瞳色-右" style="background: #581C87;"></div>
+            <div class="color-dot" name="唇色" style="background: #C084FC;"></div>
+        </div>
+    </div>
+
+    <!-- 分层建议 -->
+    <h2>分层建议</h2>
+    <div class="section" name="PSD结构">
+        <table>
+            <tr><th>图层组</th><th>图层内容</th><th>说明</th></tr>
+            <tr><td>效果层</td><td>光效、粒子、法力光芒</td><td>可开关，用于施法表情</td></tr>
+            <tr><td>表情层</td><td>眼睛、眉毛、嘴巴组合</td><td>每组表情独立图层</td></tr>
+            <tr><td>面部层</td><td>脸部、耳朵、颈部</td><td>基础面部不变</td></tr>
+            <tr><td>发型层</td><td>头发、刘海</td><td>可微调飘动</td></tr>
+            <tr><td>背景层</td><td>透明/纯色背景</td><td>可选</td></tr>
+        </table>
+    </div>
+
+    <!-- 输出清单 -->
+    <h2>输出清单</h2>
+    <div class="section" name="输出文件">
+        <table>
+            <tr><th>文件名</th><th>内容</th><th>尺寸</th><th>优先级</th></tr>
+            <tr><td>player_002_avatar_neutral.png</td><td>默认表情</td><td>128×128</td><td>P0</td></tr>
+            <tr><td>player_002_avatar_happy.png</td><td>高兴</td><td>128×128</td><td>P0</td></tr>
+            <tr><td>player_002_avatar_angry.png</td><td>愤怒</td><td>128×128</td><td>P0</td></tr>
+            <tr><td>player_002_avatar_sad.png</td><td>悲伤</td><td>128×128</td><td>P0</td></tr>
+            <tr><td>player_002_avatar_hurt.png</td><td>受伤</td><td>128×128</td><td>P0</td></tr>
+            <tr><td>player_002_avatar_surprised.png</td><td>惊讶</td><td>128×128</td><td>P1</td></tr>
+            <tr><td>player_002_avatar_thinking.png</td><td>思考</td><td>128×128</td><td>P1</td></tr>
+            <tr><td>player_002_avatar_worried.png</td><td>担心</td><td>128×128</td><td>P1</td></tr>
+            <tr><td>player_002_avatar_guilty.png</td><td>愧疚</td><td>128×128</td><td>P1</td></tr>
+            <tr><td>player_002_avatar_casting.png</td><td>施法中</td><td>128×128</td><td>P1</td></tr>
+            <tr><td>player_002_avatar_combat.png</td><td>战斗</td><td>128×128</td><td>P1</td></tr>
+            <tr><td>player_002_avatar_determined.png</td><td>坚定</td><td>128×128</td><td>P1</td></tr>
+            <tr><td>player_002_avatar.psd</td><td>分层源文件</td><td>128×128</td><td>P1</td></tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

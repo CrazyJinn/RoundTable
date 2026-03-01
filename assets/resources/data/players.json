@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "description": "玩家角色配置",
+  "characters": [
+    {
+      "id": "player_tech",
+      "name": "科技主角",
+      "type": "tech",
+      "description": "骑士团培养的战士，擅长使用科技装备进行近战",
+      "stats": {
+        "maxHp": 100,
+        "atk": 15,
+        "def": 10,
+        "spd": 150,
+        "critRate": 0.1,
+        "critDamage": 1.5
+      },
+      "skills": ["tech_grenade", "tech_emp", "tech_orbital"],
+      "ammo": {
+        "max": 30,
+        "reloadTime": 1.5
+      },
+      "background": "3岁时双亲被魔法派误杀，被骑士团救下并抚养长大。现在是一名优秀的骑士团战士。"
+    },
+    {
+      "id": "player_magic",
+      "name": "魔法主角",
+      "type": "magic",
+      "description": "秘术协会的魔法师，能够释放强大的魔法攻击",
+      "stats": {
+        "maxHp": 80,
+        "maxMp": 100,
+        "atk": 20,
+        "def": 5,
+        "spd": 130,
+        "critRate": 0.15,
+        "critDamage": 1.8
+      },
+      "skills": ["magic_fireball", "magic_frost", "magic_meteor"],
+      "mp": {
+        "max": 100,
+        "meditateRecovery": 10
+      },
+      "background": "秘术协会的高级成员，14年前在一次任务中意外杀死了科技主角的双亲。寿命可达300岁。"
+    }
+  ]
+}

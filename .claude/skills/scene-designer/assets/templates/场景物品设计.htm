@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>场景物品设计 - [场景名称]</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: sans-serif; background: #1a1a2e; color: #eee; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: #ff6b6b; border-bottom: 2px solid #ff6b6b; padding-bottom: 10px; margin-bottom: 20px; }
+        h2 { color: #4ecdc4; margin: 20px 0 15px; padding-left: 10px; border-left: 3px solid #4ecdc4; }
+
+        .section { background: #16213e; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .info-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .info-item { background: #2a2a4a; padding: 10px 15px; border-radius: 5px; min-width: 150px; }
+
+        .item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px; }
+        .item-card { background: #2a2a4a; border-radius: 8px; aspect-ratio: 1; border: 2px solid transparent; }
+        .item-card:hover { border-color: #4ecdc4; }
+
+        .sprite-row { display: flex; gap: 4px; margin: 10px 0; align-items: flex-end; }
+        .sprite-frame { width: 40px; height: 40px; background: #2a2a4a; border: 1px solid #0f3460; border-radius: 4px; }
+        .sprite-frame:hover { border-color: #4ecdc4; }
+
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #0f3460; }
+        th { background: #0f3460; color: #4ecdc4; }
+        td { background: #1a1a2e; }
+
+        .flow-demo { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 15px 0; padding: 15px; background: #2a2a4a; border-radius: 8px; }
+        .flow-step { background: #1a1a2e; border-radius: 6px; padding: 8px 12px; }
+        .flow-arrow { color: #4ecdc4; }
+
+        .collision-demo { width: 80px; height: 80px; background: #2a2a4a; border-radius: 8px; position: relative; margin: 15px auto; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>场景物品设计 - [场景名称]</h1>
+
+    <!-- 基本信息 -->
+    <div class="section" name="场景档案">
+        <div class="info-row">
+            <div class="info-item" name="场景ID">[scene_001]</div>
+            <div class="info-item" name="场景名称">[名称]</div>
+            <div class="info-item" name="物品总数">[数量]种</div>
+        </div>
+    </div>
+
+    <!-- 规格要求 -->
+    <div class="section" name="规格要求">
+        <div class="info-row">
+            <div class="info-item" name="物品尺寸">[最小]-[最大]</div>
+            <div class="info-item" name="输出格式">PNG</div>
+            <div class="info-item" name="命名规范">[场景ID]_item_[类型]_[序号]</div>
+        </div>
+    </div>
+
+    <!-- 物品清单 -->
+    <h2>物品清单</h2>
+    <div class="section" name="物品总览">
+        <table>
+            <tr><th>物品ID</th><th>名称</th><th>类型</th><th>尺寸</th><th>可交互</th><th>动画帧</th><th>优先级</th></tr>
+            <tr name="物品1"><td>item_001</td><td>[名称]</td><td>[类型]</td><td>[尺寸]</td><td>[是/否]</td><td>[帧数]</td><td>P0</td></tr>
+            <tr name="物品2"><td>item_002</td><td>[名称]</td><td>[类型]</td><td>[尺寸]</td><td>[是/否]</td><td>[帧数]</td><td>P0</td></tr>
+            <tr name="物品3"><td>item_003</td><td>[名称]</td><td>[类型]</td><td>[尺寸]</td><td>[是/否]</td><td>[帧数]</td><td>P1</td></tr>
+        </table>
+    </div>
+
+    <!-- 装饰物品 -->
+    <h2>装饰物品</h2>
+    <div class="section" name="自然装饰">
+        <div class="item-grid">
+            <div class="item-card" name="树木01"></div>
+            <div class="item-card" name="树木02"></div>
+            <div class="item-card" name="草丛01"></div>
+            <div class="item-card" name="草丛02"></div>
+            <div class="item-card" name="石头01"></div>
+            <div class="item-card" name="石头02"></div>
+        </div>
+    </div>
+
+    <div class="section" name="建筑装饰">
+        <div class="item-grid">
+            <div class="item-card" name="建筑01"></div>
+            <div class="item-card" name="建筑02"></div>
+            <div class="item-card" name="路牌01"></div>
+            <div class="item-card" name="灯柱01"></div>
+        </div>
+    </div>
+
+    <!-- 可交互物品 -->
+    <h2>可交互物品</h2>
+    <div class="section" name="收集品">
+        <div class="item-grid">
+            <div class="item-card" name="宝箱01"></div>
+            <div class="item-card" name="宝箱02"></div>
+            <div class="item-card" name="收集品01"></div>
+            <div class="item-card" name="收集品02"></div>
+        </div>
+    </div>
+
+    <div class="section" name="功能物品">
+        <div class="item-grid">
+            <div class="item-card" name="存档点"></div>
+            <div class="item-card" name="传送门"></div>
+            <div class="item-card" name="商店"></div>
+            <div class="item-card" name="工作台"></div>
+        </div>
+    </div>
+
+    <div class="section" name="交互流程">
+        <div class="flow-demo">
+            <div class="flow-step" name="靠近">靠近</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step" name="提示">显示提示</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step" name="按键">按键触发</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step" name="效果">执行效果</div>
+        </div>
+    </div>
+
+    <!-- 动画物品 -->
+    <h2>动画物品</h2>
+    <div class="section" name="精灵表示例">
+        <p style="color: #4ecdc4; margin-bottom: 10px;">宝箱开启动画</p>
+        <div class="sprite-row" name="宝箱动画帧">
+            <div class="sprite-frame" name="关闭"></div>
+            <div class="sprite-frame" name="开启中1"></div>
+            <div class="sprite-frame" name="开启中2"></div>
+            <div class="sprite-frame" name="已开启"></div>
+        </div>
+    </div>
+
+    <div class="section" name="动画配置">
+        <table>
+            <tr><th>物品ID</th><th>动画名</th><th>帧数</th><th>FPS</th><th>循环</th><th>触发</th></tr>
+            <tr name="宝箱"><td>item_chest</td><td>open</td><td>4</td><td>12</td><td>否</td><td>按键</td></tr>
+            <tr name="存档点"><td>item_save</td><td>glow</td><td>8</td><td>10</td><td>是</td><td>始终</td></tr>
+            <tr name="传送门"><td>item_portal</td><td>spin</td><td>6</td><td>8</td><td>是</td><td>始终</td></tr>
+            <tr name="草丛"><td>item_grass</td><td>sway</td><td>4</td><td>6</td><td>是</td><td>始终</td></tr>
+        </table>
+    </div>
+
+    <!-- 碰撞与交互 -->
+    <h2>碰撞与交互</h2>
+    <div class="section" name="碰撞框类型">
+        <table>
+            <tr><th>类型</th><th>碰撞</th><th>尺寸</th><th>说明</th></tr>
+            <tr name="大型建筑"><td>大型建筑</td><td>完整碰撞</td><td>与图像相同</td><td>完全不可穿过</td></tr>
+            <tr name="树木"><td>树木</td><td>底部碰撞</td><td>宽100% 高30%</td><td>仅树干不可穿过</td></tr>
+            <tr name="小型装饰"><td>小型装饰</td><td>无碰撞</td><td>-</td><td>可自由穿过</td></tr>
+            <tr name="交互物品"><td>交互物品</td><td>触发区域</td><td>图像+扩展</td><td>进入显示提示</td></tr>
+        </table>
+    </div>
+
+    <div class="section" name="交互范围示意">
+        <div class="collision-demo" name="交互范围">
+            <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; border: 2px solid #4ecdc4;" name="物品"></div>
+            <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 70px; height: 70px; border: 2px dashed #ffe66d; border-radius: 50%;" name="交互范围"></div>
+        </div>
+    </div>
+
+    <!-- 输出清单 -->
+    <h2>输出清单</h2>
+    <div class="section" name="输出文件">
+        <table>
+            <tr><th>文件名</th><th>内容</th><th>格式</th><th>优先级</th></tr>
+            <tr name="装饰物品"><td>[ID]_items_decor.png</td><td>装饰物品精灵图</td><td>PNG</td><td>P0</td></tr>
+            <tr name="交互物品"><td>[ID]_items_interact.png</td><td>可交互物品精灵图</td><td>PNG</td><td>P0</td></tr>
+            <tr name="动画物品"><td>[ID]_items_animated.png</td><td>动画物品精灵表</td><td>PNG</td><td>P1</td></tr>
+            <tr name="配置数据"><td>[ID]_items_config.json</td><td>物品配置数据</td><td>JSON</td><td>P0</td></tr>
+            <tr name="源文件"><td>[ID]_items.psd</td><td>分层源文件</td><td>PSD</td><td>P2</td></tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>立绘设计 - 魔法主角</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft YaHei', sans-serif; background: #1a1a2e; color: #eee; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #ff6b6b; border-bottom: 2px solid #ff6b6b; padding-bottom: 10px; margin-bottom: 20px; }
+        h2 { color: #4ecdc4; margin: 20px 0 15px; padding-left: 10px; border-left: 3px solid #4ecdc4; }
+
+        .section { background: #16213e; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .info-row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .info-item { background: #2a2a4a; padding: 10px 15px; border-radius: 5px; min-width: 200px; }
+        .info-item::before { content: attr(name); display: block; font-size: 11px; color: #888; margin-bottom: 5px; }
+
+        .canvas-area { background: #2a2a4a; border: 2px dashed #4ecdc4; border-radius: 8px; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+
+        .color-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+        .color-swatch { width: 50px; height: 50px; border-radius: 6px; border: 2px solid transparent; position: relative; }
+        .color-swatch:hover { border-color: #fff; transform: scale(1.1); }
+        .color-swatch::after { content: attr(name); position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; white-space: nowrap; color: #888; }
+
+        .ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+        .ref-box { background: #2a2a4a; border-radius: 8px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #666; font-size: 12px; }
+
+        .split-view { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 800px) { .split-view { grid-template-columns: 1fr; } }
+
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #0f3460; }
+        th { background: #0f3460; color: #4ecdc4; }
+        td { background: #1a1a2e; }
+
+        .tag { display: inline-block; background: #4ecdc4; color: #1a1a2e; padding: 2px 8px; border-radius: 3px; font-size: 11px; margin: 2px; }
+        .tag.magic { background: linear-gradient(135deg, #ff6b6b, #ffe66d, #4ecdc4, #a855f7); }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>立绘设计 - 魔法主角 (player_002)</h1>
+
+    <!-- 基本信息 -->
+    <div class="section" name="角色档案">
+        <div class="info-row">
+            <div class="info-item" name="角色ID">player_002</div>
+            <div class="info-item" name="角色名称">魔法主角</div>
+            <div class="info-item" name="角色定位">玩家角色 · 远程法师</div>
+            <div class="info-item" name="势力阵营">魔法派 · 秘术协会</div>
+        </div>
+    </div>
+
+    <!-- 规格要求 -->
+    <div class="section" name="规格要求">
+        <div class="info-row">
+            <div class="info-item" name="输出尺寸">1920 × 1080 px</div>
+            <div class="info-item" name="分辨率">72 DPI</div>
+            <div class="info-item" name="文件格式">PNG (透明背景)</div>
+            <div class="info-item" name="画风">手绘风格</div>
+        </div>
+    </div>
+
+    <!-- 设计关键词 -->
+    <div class="section" name="设计关键词">
+        <div class="info-row">
+            <span class="tag magic">彩虹色</span>
+            <span class="tag">秘术协会</span>
+            <span class="tag">远程魔法</span>
+            <span class="tag">神秘优雅</span>
+            <span class="tag">120岁精灵感</span>
+            <span class="tag">变异体质</span>
+        </div>
+    </div>
+
+    <!-- 角色设定 -->
+    <h2>角色设定</h2>
+    <div class="section" name="角色背景描述">
+        <p><strong>年龄：</strong>120岁（魔法派因变异寿命可达300岁，外表约20岁出头）</p>
+        <p><strong>背景：</strong>14年前执行任务时误杀男主双亲，这段往事成为她心中的隐秘伤痛。作为秘术协会的精英法师，她擅长释放各种杀伤性魔法，以远程攻击为主。</p>
+        <p><strong>性格：</strong>沉稳内敛，带着一丝忧郁。对待任务认真负责，但内心深处渴望赎罪。战斗时冷静果断，展现出资深法师的从容。</p>
+        <p><strong>变异特征：</strong>魔法派成员因辐射变异获得魔法能力，她的身体呈现出轻微的彩虹光泽，施展魔法时尤为明显。</p>
+    </div>
+
+    <!-- 外貌特征表格 -->
+    <div class="section" name="外貌特征">
+        <table>
+            <tr><th>特征</th><th>描述</th><th>设计要点</th></tr>
+            <tr>
+                <td>年龄外观</td>
+                <td>外表约22-25岁，但眼神中透露出百年的沧桑</td>
+                <td>面部保持年轻，但眼神要有故事感，可添加轻微的法力纹路</td>
+            </tr>
+            <tr>
+                <td>体型</td>
+                <td>高挑纤细，约170cm，优雅的法师体态</td>
+                <td>身材修长但不瘦弱，展现长期战斗锻炼的体格</td>
+            </tr>
+            <tr>
+                <td>发型发色</td>
+                <td>及腰长发，彩虹渐变色（紫→蓝→青→绿→黄→橙→红）</td>
+                <td>发丝有微微的光泽感，末端带有魔法光粒子飘散效果</td>
+            </tr>
+            <tr>
+                <td>瞳色</td>
+                <td>异色瞳：左眼彩虹色，右眼深紫色</td>
+                <td>眼睛中可有魔法符文闪烁，暗示强大的魔力</td>
+            </tr>
+            <tr>
+                <td>肤色</td>
+                <td>白皙透亮，带有轻微的珍珠光泽</td>
+                <td>皮肤表面隐约有彩虹色魔力流动的纹路</td>
+            </tr>
+            <tr>
+                <td>显著特征</td>
+                <td>手臂和颈部有秘术协会的法力纹身</td>
+                <td>纹身在使用魔法时会发出彩虹色光芒</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 服装设计表格 -->
+    <div class="section" name="服装设计">
+        <table>
+            <tr><th>部位</th><th>描述</th><th>材质/颜色</th></tr>
+            <tr>
+                <td>头部</td>
+                <td>无帽子，发型自然飘逸，额前有小型魔法宝石饰品</td>
+                <td>彩虹色宝石，银色金属底座</td>
+            </tr>
+            <tr>
+                <td>上衣</td>
+                <td>修身法袍上衣，立领设计，袖口宽大飘逸，胸前有秘术协会徽章</td>
+                <td>深紫色主布料，彩虹色滚边和刺绣，银色徽章</td>
+            </tr>
+            <tr>
+                <td>下装</td>
+                <td>及膝法袍裙摆，高开叉设计便于行动，内穿紧身裤</td>
+                <td>深紫色与黑色渐变，彩虹色内衬</td>
+            </tr>
+            <tr>
+                <td>鞋靴</td>
+                <td>高跟长靴，靴筒至膝盖下方，有魔法增幅阵纹</td>
+                <td>黑色皮革，银色魔法纹路，紫色宝石装饰</td>
+            </tr>
+            <tr>
+                <td>配饰</td>
+                <td>① 颈部：秘术协会项圈 ② 手部：魔法增幅手环 ③ 腰部：储物腰带 ④ 背部：短披风</td>
+                <td>银色金属，彩虹色宝石，深紫色披风带彩虹滚边</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 配色方案 -->
+    <h2>配色方案</h2>
+    <div class="section" name="主色板">
+        <p style="color: #888; margin-bottom: 10px;">主题：彩虹色（秘术协会标志性配色）</p>
+        <div class="color-row">
+            <div class="color-swatch" name="主色-法袍" style="background: #6B21A8;"></div>
+            <div class="color-swatch" name="辅色-内衬" style="background: #1E1B4B;"></div>
+            <div class="color-swatch" name="强调-彩虹" style="background: linear-gradient(135deg, #ff6b6b, #ffe66d, #4ecdc4, #a855f7);"></div>
+            <div class="color-swatch" name="金属-银" style="background: #C0C0C0;"></div>
+            <div class="color-swatch" name="点缀-宝石" style="background: #8B5CF6;"></div>
+        </div>
+    </div>
+
+    <div class="section" name="肤色与发色">
+        <div class="color-row">
+            <div class="color-swatch" name="肤色-基底" style="background: #FDF4FF;"></div>
+            <div class="color-swatch" name="肤色-阴影" style="background: #E9D5FF;"></div>
+            <div class="color-swatch" name="发色-渐变" style="background: linear-gradient(90deg, #7C3AED, #2563EB, #06B6D4, #10B981, #F59E0B, #EF4444);"></div>
+            <div class="color-swatch" name="瞳色-左" style="background: linear-gradient(135deg, #ff6b6b, #ffe66d, #4ecdc4);"></div>
+            <div class="color-swatch" name="瞳色-右" style="background: #581C87;"></div>
+        </div>
+    </div>
+
+    <!-- 立绘构图 -->
+    <h2>立绘构图</h2>
+    <div class="section">
+        <div class="split-view">
+            <div class="canvas-area" name="全身立绘区域">
+                <div style="width: 80%; height: 90%; border: 1px dashed #555; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #555;" name="立绘占位框">
+                    魔法主角全身立绘<br>
+                    1920 × 1080 px
+                </div>
+            </div>
+            <div>
+                <table name="构图要点">
+                    <tr><th>项目</th><th>说明</th></tr>
+                    <tr><td>姿势</td><td>优雅站立，右手抬起凝聚魔法能量，左手自然下垂</td></tr>
+                    <tr><td>重心</td><td>重心略微偏向左腿，右腿优雅伸展</td></tr>
+                    <tr><td>视线方向</td><td>微微侧身，目光看向画面右前方，略带忧郁</td></tr>
+                    <tr><td>手部动作</td><td>右手掌心向上，悬浮彩虹色魔法球；左手轻握法杖或自然下垂</td></tr>
+                    <tr><td>服装飘动</td><td>发丝和裙摆向右飘动，营造魔法释放的动势感</td></tr>
+                    <tr><td>魔法效果</td><td>周围环绕彩虹色魔法粒子，脚下有淡紫色魔法阵</td></tr>
+                </table>
+
+                <table name="图层规划" style="margin-top: 15px;">
+                    <tr><th>图层</th><th>内容</th></tr>
+                    <tr><td>前景效果</td><td>魔法光效、粒子、光晕</td></tr>
+                    <tr><td>身体前部</td><td>右手、魔法球、衣物前摆</td></tr>
+                    <tr><td>躯干</td><td>主体服装、身体、面部</td></tr>
+                    <tr><td>身体后部</td><td>头发后层、披风、魔法阵</td></tr>
+                    <tr><td>背景效果</td><td>环境光、氛围粒子</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 局部设计 -->
+    <h2>局部设计详图</h2>
+    <div class="section" name="局部设计详图">
+        <div class="ref-grid">
+            <div class="ref-box" name="头部特写">头部特写<br>面部+发型+饰品</div>
+            <div class="ref-box" name="上半身">上半身<br>法袍+徽章+纹身</div>
+            <div class="ref-box" name="手部与魔法">手部与魔法<br>魔法球+增幅手环</div>
+            <div class="ref-box" name="下半身">下半身<br>裙摆+靴子+魔法阵</div>
+        </div>
+    </div>
+
+    <!-- 表情变体 -->
+    <h2>表情变体</h2>
+    <div class="section" name="基础表情">
+        <div class="ref-grid">
+            <div class="ref-box" name="默认表情">默认<br>平静略带忧郁</div>
+            <div class="ref-box" name="施法">施法<br>专注认真</div>
+            <div class="ref-box" name="战斗">战斗<br>冷静果断</div>
+            <div class="ref-box" name="受伤">受伤<br>痛苦咬牙</div>
+            <div class="ref-box" name="微笑">微笑<br>温柔带伤感</div>
+            <div class="ref-box" name="愧疚">愧疚<br>回忆往事</div>
+        </div>
+    </div>
+
+    <!-- 参考素材 -->
+    <h2>参考素材</h2>
+    <div class="section" name="风格参考">
+        <div class="ref-grid">
+            <div class="ref-box" name="风格配色参考">彩虹色法师<br>渐变发色参考</div>
+            <div class="ref-box" name="服装配饰参考">秘术师法袍<br>魔法饰品</div>
+            <div class="ref-box" name="姿势构图参考">优雅施法姿势<br>魔法效果参考</div>
+        </div>
+    </div>
+
+    <!-- 输出清单 -->
+    <h2>输出清单</h2>
+    <div class="section" name="输出文件列表">
+        <table>
+            <tr><th>文件名</th><th>内容</th><th>格式</th><th>尺寸</th><th>优先级</th></tr>
+            <tr><td>player_002_立绘_全身_默认.png</td><td>全身立绘-默认表情</td><td>PNG</td><td>1920×1080</td><td>P0</td></tr>
+            <tr><td>player_002_立绘_全身_施法.png</td><td>全身立绘-施法表情</td><td>PNG</td><td>1920×1080</td><td>P0</td></tr>
+            <tr><td>player_002_立绘_全身_受伤.png</td><td>全身立绘-受伤表情</td><td>PNG</td><td>1920×1080</td><td>P0</td></tr>
+            <tr><td>player_002_立绘_半身.png</td><td>半身立绘（对话用）</td><td>PNG</td><td>960×1080</td><td>P1</td></tr>
+            <tr><td>player_002_立绘.psd</td><td>分层源文件</td><td>PSD</td><td>1920×1080</td><td>P1</td></tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
